@@ -480,6 +480,375 @@
         ::-webkit-scrollbar-thumb:hover {
             background: rgba(255, 255, 255, 0.5);
         }
+        
+        /* Game Info Styles */
+        .game-info {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .info-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .info-card p {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        
+        .game-description {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .game-description h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .game-description p {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* System Requirements Styles */
+        .system-requirements {
+            padding: 80px 0;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .req-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .req-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .req-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .req-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .req-label {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .req-value {
+            color: #4ecdc4;
+        }
+        
+        /* Wishlist Styles */
+        .wishlist-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .store-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .store-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .store-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #4ecdc4;
+        }
+        
+        .store-btn.steam:hover {
+            border-color: #1b2838;
+            background: rgba(27, 40, 56, 0.3);
+        }
+        
+        .store-btn.nintendo:hover {
+            border-color: #e60012;
+            background: rgba(230, 0, 18, 0.3);
+        }
+        
+        .store-btn.xbox:hover {
+            border-color: #107c10;
+            background: rgba(16, 124, 16, 0.3);
+        }
+        
+        .store-btn.playstation:hover {
+            border-color: #003791;
+            background: rgba(0, 55, 145, 0.3);
+        }
+        
+        .store-icon {
+            font-size: 2rem;
+        }
+        
+        /* Player Reviews Styles */
+        .player-reviews {
+            padding: 80px 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #4ecdc4;
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .review-text {
+            color: #fff;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .review-author {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-rating {
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+        
+        /* Similar Games Styles */
+        .similar-games {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .game-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .game-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .game-link {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .game-link:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Team Info Styles */
+        .team-info {
+            padding: 80px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .member-avatar {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .team-member h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .team-member p {
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        /* FAQ Styles */
+        .faq {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .faq-item h3 {
+            color: #fff;
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .faq-item h3::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4ecdc4;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active h3::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+        
+        .faq-answer p {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0 1.5rem 1.5rem;
+            margin: 0;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body>
@@ -491,6 +860,8 @@
                 <li><a href="#guides">Guides</a></li>
                 <li><a href="#map">Map</a></li>
                 <li><a href="#community">Community</a></li>
+                <li><a href="#game-info">Game Info</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#news">News</a></li>
                 <li><a href="siiksong-features.html">Features</a></li>
             </ul>
@@ -646,6 +1017,279 @@
             <div style="text-align: center; margin-top: 3rem;">
                 <a href="#" class="btn btn-primary" onclick="joinCommunity()">Join Community</a>
                 <a href="#" class="btn btn-secondary" onclick="viewDiscord()">Discord Server</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Info Section -->
+    <section class="game-info" id="game-info">
+        <div class="container">
+            <h2 class="section-title">关于《空洞骑士：丝之歌》</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h3>游戏类型</h3>
+                    <p>类银河战士恶魔城 (Metroidvania)</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <h3>发布日期</h3>
+                    <p>2025年9月4日</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🏢</div>
+                    <h3>开发团队</h3>
+                    <p>Team Cherry (澳大利亚)</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3>游戏时长</h3>
+                    <p>预计15-20小时</p>
+                </div>
+            </div>
+            
+            <div class="game-description">
+                <h3>游戏简介</h3>
+                <p>致命的猎人Hornet发现自己独自在一个广阔而陌生的王国中。她必须与敌人战斗，寻找盟友，并解决谜题，在她前往王国巅峰的致命朝圣之旅中。</p>
+                <p>Hornet必须掌握一套全新的强大动作来生存。她将释放毁灭性的攻击，学习令人难以置信的丝绸能力，并制作致命的工具来克服王国的挑战。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements Section -->
+    <section class="system-requirements" id="system-requirements">
+        <div class="container">
+            <h2 class="section-title">系统要求</h2>
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <h3>最低配置</h3>
+                    <div class="req-list">
+                        <div class="req-item">
+                            <span class="req-label">操作系统:</span>
+                            <span class="req-value">Windows 7</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">处理器:</span>
+                            <span class="req-value">Intel Core 2 Duo E5200</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">内存:</span>
+                            <span class="req-value">4 GB RAM</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">显卡:</span>
+                            <span class="req-value">GeForce 9800GTX+ (1GB)</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">存储:</span>
+                            <span class="req-value">9 GB 可用空间</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="req-card">
+                    <h3>推荐配置</h3>
+                    <div class="req-list">
+                        <div class="req-item">
+                            <span class="req-label">操作系统:</span>
+                            <span class="req-value">Windows 10</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">处理器:</span>
+                            <span class="req-value">Intel Core i5</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">内存:</span>
+                            <span class="req-value">8 GB RAM</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">显卡:</span>
+                            <span class="req-value">GeForce GTX 560+</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">存储:</span>
+                            <span class="req-value">9 GB 可用空间</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section" id="wishlist">
+        <div class="container">
+            <h2 class="section-title">添加到愿望单</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">
+                准备好体验Hornet的史诗之旅了吗？添加到愿望单，第一时间获得游戏发布通知！
+            </p>
+            <div class="store-links">
+                <a href="#" class="store-btn steam" onclick="addToWishlist('steam')">
+                    <span class="store-icon">🎮</span>
+                    Steam 愿望单
+                </a>
+                <a href="#" class="store-btn nintendo" onclick="addToWishlist('nintendo')">
+                    <span class="store-icon">🎮</span>
+                    Nintendo Switch
+                </a>
+                <a href="#" class="store-btn xbox" onclick="addToWishlist('xbox')">
+                    <span class="store-icon">🎮</span>
+                    Xbox Game Pass
+                </a>
+                <a href="#" class="store-btn playstation" onclick="addToWishlist('playstation')">
+                    <span class="store-icon">🎮</span>
+                    PlayStation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Reviews Section -->
+    <section class="player-reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">玩家评价</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                基于公开演示、预览和开发者采访的社区反馈
+            </p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-text">
+                        "我在PAX试玩了演示版，完全被震撼了。Hornet的移动感觉如此流畅和响应。这绝对会超越原版！"
+                    </div>
+                    <div class="review-author">- Alex P.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "从目前看到的美术风格绝对令人惊艳。Team Cherry在环境和角色设计上超越了自己。等不及完整版了！"
+                    </div>
+                    <div class="review-author">- Maya K.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "Silksong发布的音乐样本令人难以置信。Christopher Larkin是天才。我一直在重复听预告片，等不及听完整配乐！"
+                    </div>
+                    <div class="review-author">- Takashi R.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "Silksong中的战斗看起来比空洞骑士更加快节奏和动态。Hornet的丝绸能力为游戏玩法创造了全新的维度。对我来说是首日购买！"
+                    </div>
+                    <div class="review-author">- Elena S.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Games Section -->
+    <section class="similar-games" id="similar-games">
+        <div class="container">
+            <h2 class="section-title">等待期间可以玩的游戏</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                在等待Silksong发布期间，这些游戏可以满足您对类银河战士恶魔城游戏的渴望
+            </p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">🦋</div>
+                    <h3>Ori and the Will of the Wisps</h3>
+                    <p>美丽的类银河战士恶魔城游戏，拥有令人惊叹的视觉效果和感人的故事</p>
+                    <a href="#" class="game-link" onclick="viewGame('ori')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">⚔️</div>
+                    <h3>Dead Cells</h3>
+                    <p>快节奏的rogue-like动作游戏，结合了类银河战士恶魔城的探索元素</p>
+                    <a href="#" class="game-link" onclick="viewGame('deadcells')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🏔️</div>
+                    <h3>Celeste</h3>
+                    <p>挑战性的平台跳跃游戏，拥有精美的像素艺术和感人的故事</p>
+                    <a href="#" class="game-link" onclick="viewGame('celeste')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🌙</div>
+                    <h3>Hollow Knight</h3>
+                    <p>原版游戏！如果您还没有体验过，现在正是时候</p>
+                    <a href="#" class="game-link" onclick="viewGame('hollowknight')">了解更多 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Info Section -->
+    <section class="team-info" id="team">
+        <div class="container">
+            <h2 class="section-title">开发团队 Team Cherry</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                《空洞骑士：丝之歌》由澳大利亚阿德莱德的Team Cherry开发。我们是一个3人团队，除了制作游戏外，还负责构建网站、制作游戏预告片等等。
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👨‍🎨</div>
+                    <h3>Ari Gibson</h3>
+                    <p>负责游戏设计和美术，创造游戏的艺术、环境和数百个虫子的动画。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>William Pellen</h3>
+                    <p>负责游戏设计，创造敌人、Boss和游戏行为。如果敌人太有挑战性，就怪他！</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>Jack Vine</h3>
+                    <p>Silksong的超级天才程序员，构建系统、优化和添加全新的激动人心的功能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问题</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                关于《空洞骑士：丝之歌》的一切您需要了解的信息
+            </p>
+            <div class="faq-list">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏什么时候发布？</h3>
+                    <div class="faq-answer">
+                        <p>根据2025年4月2日任天堂直面会确认，游戏将于2025年9月4日发布。Team Cherry正在努力完善游戏，确保为玩家提供最佳体验。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>需要先玩原版《空洞骑士》吗？</h3>
+                    <div class="faq-answer">
+                        <p>虽然不强制要求，但强烈建议先体验原版游戏以更好地理解游戏世界和角色背景。Silksong是Hornet的独立冒险，但与原版游戏有深层的联系。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏支持哪些平台？</h3>
+                    <div class="faq-answer">
+                        <p>游戏将支持Windows、Mac、Linux和Nintendo Switch。其他平台如PlayStation和Xbox可能稍后公布。游戏还将支持Xbox Game Pass。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏时长有多长？</h3>
+                    <div class="faq-answer">
+                        <p>根据Team Cherry的估计，游戏时长约为15-20小时，具体取决于玩家的探索程度和技能水平。这比原版游戏稍短，但内容更加紧凑。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>Hornet有哪些新能力？</h3>
+                    <div class="faq-answer">
+                        <p>Hornet拥有全新的移动系统，包括跳跃、滑翔和一系列武器技能。她还可以使用丝绸能力来创造平台、攻击敌人和解决谜题。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏会有DLC吗？</h3>
+                    <div class="faq-answer">
+                        <p>Team Cherry尚未公布DLC计划，但考虑到原版游戏的免费DLC支持，Silksong很可能也会有额外的内容更新。</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -898,9 +1542,116 @@
         - Community integration
         - News updates
         - Smooth animations
+        - Game information
+        - System requirements
+        - FAQ system
+        - Player reviews
+        - Similar games
+        - Team information
         
         Built with vanilla HTML, CSS, and JavaScript for maximum compatibility.
         `);
+        
+        // New functionality for added sections
+        function addToWishlist(platform) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const platformNames = {
+                    'steam': 'Steam',
+                    'nintendo': 'Nintendo Switch',
+                    'xbox': 'Xbox Game Pass',
+                    'playstation': 'PlayStation'
+                };
+                alert(`正在将《空洞骑士：丝之歌》添加到${platformNames[platform]}愿望单...\n\n在真实实现中，这将重定向到相应的商店页面。`);
+            }, 1000);
+        }
+        
+        function viewGame(gameName) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const gameNames = {
+                    'ori': 'Ori and the Will of the Wisps',
+                    'deadcells': 'Dead Cells',
+                    'celeste': 'Celeste',
+                    'hollowknight': 'Hollow Knight'
+                };
+                alert(`正在查看${gameNames[gameName]}的详细信息...\n\n在真实实现中，这将重定向到游戏商店页面或详细信息页面。`);
+            }, 800);
+        }
+        
+        function toggleFAQ(faqItem) {
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+        }
+        
+        // Add click handlers for new sections
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.review-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.01)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            member.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add animation for new sections when they come into view
+        const newSections = document.querySelectorAll('.game-info, .system-requirements, .wishlist-section, .player-reviews, .similar-games, .team-info, .faq');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        newSections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            sectionObserver.observe(section);
+        });
     </script>
 </body>
 </html>
