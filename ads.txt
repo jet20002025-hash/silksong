@@ -1,0 +1,8 @@
+# ads.txt file for siiksong.store
+# This file is used to declare authorized digital sellers for this website
+
+# Google AdSense
+google.com, pub-7208260866318884, DIRECT, f08c47fec0942fa0
+
+# Additional authorized sellers can be added here
+# Format: domain, publisher_id, relationship, certification_authority_id
