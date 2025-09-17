@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户中心 - Siiksong</title>
+    <meta name="description" content="Siiksong用户登录注册系统">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .auth-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .auth-header h1 {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-header p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .auth-tab.active {
+            background: #4ecdc4;
+            color: #fff;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            border-color: #4ecdc4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .auth-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+        
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .auth-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .social-login {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .social-login p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+        
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .social-button {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .social-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .back-link:hover {
+            color: #44a08d;
+        }
+        
+        .error-message {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+            color: #e74c3c;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .success-message {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+            color: #2ecc71;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #4ecdc4;
+        }
+        
+        .spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid #4ecdc4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 480px) {
+            .auth-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .back-link {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">
+        ← 返回首页
+    </a>
+    
+    <div class="auth-container">
+        <div class="auth-header">
+            <h1>🦗 Siiksong</h1>
+            <p>加入我们的社区，分享您的丝之歌体验</p>
+        </div>
+        
+        <div class="auth-tabs">
+            <button class="auth-tab active" onclick="switchTab('login')">登录</button>
+            <button class="auth-tab" onclick="switchTab('register')">注册</button>
+        </div>
+        
+        <!-- Error/Success Messages -->
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+        
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>处理中...</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form id="loginForm" class="auth-form active">
+            <div class="form-group">
+                <label for="loginEmail">邮箱地址</label>
+                <input type="email" id="loginEmail" placeholder="输入您的邮箱" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="loginPassword">密码</label>
+                <input type="password" id="loginPassword" placeholder="输入您的密码" required>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="rememberMe" style="margin-right: 0.5rem;">
+                    记住我
+                </label>
+            </div>
+            
+            <button type="submit" class="auth-button">登录</button>
+            
+            <div style="text-align: center;">
+                <a href="#" onclick="showForgotPassword()" style="color: #4ecdc4; text-decoration: none;">
+                    忘记密码？
+                </a>
+            </div>
+        </form>
+        
+        <!-- Register Form -->
+        <form id="registerForm" class="auth-form">
+            <div class="form-group">
+                <label for="registerUsername">用户名</label>
+                <input type="text" id="registerUsername" placeholder="选择一个用户名" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerEmail">邮箱地址</label>
+                <input type="email" id="registerEmail" placeholder="输入您的邮箱" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="registerPassword">密码</label>
+                <input type="password" id="registerPassword" placeholder="创建密码" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">确认密码</label>
+                <input type="password" id="confirmPassword" placeholder="再次输入密码" required>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="agreeTerms" style="margin-right: 0.5rem;" required>
+                    我同意 <a href="privacy-policy.html" style="color: #4ecdc4;">隐私政策</a> 和 <a href="#" style="color: #4ecdc4;">服务条款</a>
+                </label>
+            </div>
+            
+            <button type="submit" class="auth-button">注册</button>
+        </form>
+        
+        <!-- Social Login -->
+        <div class="social-login">
+            <p>或者使用社交账号登录</p>
+            <div class="social-buttons">
+                <a href="#" class="social-button" onclick="socialLogin('google')">
+                    <span>🔍</span> Google
+                </a>
+                <a href="#" class="social-button" onclick="socialLogin('discord')">
+                    <span>💬</span> Discord
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.auth-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update forms
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            document.getElementById(tab + 'Form').classList.add('active');
+            
+            // Clear messages
+            hideMessages();
+        }
+        
+        // Show/hide messages
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(hideMessages, 5000);
+        }
+        
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(hideMessages, 5000);
+        }
+        
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+        
+        // Show/hide loading
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+        
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+        
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+            
+            // Basic validation
+            if (!email || !password) {
+                showError('请填写所有必填字段');
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate API call
+            setTimeout(() => {
+                hideLoading();
+                
+                // Simulate successful login
+                if (email === 'test@example.com' && password === 'password') {
+                    showSuccess('登录成功！正在跳转...');
+                    localStorage.setItem('userLoggedIn', 'true');
+                    localStorage.setItem('userEmail', email);
+                    if (rememberMe) {
+                        localStorage.setItem('rememberMe', 'true');
+                    }
+                    
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    showError('邮箱或密码错误');
+                }
+            }, 1500);
+        });
+        
+        // Register form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const agreeTerms = document.getElementById('agreeTerms').checked;
+            
+            // Basic validation
+            if (!username || !email || !password || !confirmPassword) {
+                showError('请填写所有必填字段');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showError('密码不匹配');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showError('密码至少需要6个字符');
+                return;
+            }
+            
+            if (!agreeTerms) {
+                showError('请同意隐私政策和服务条款');
+                return;
+            }
+            
+            showLoading();
+            
+            // Simulate API call
+            setTimeout(() => {
+                hideLoading();
+                showSuccess('注册成功！请登录您的账户');
+                
+                // Switch to login tab
+                setTimeout(() => {
+                    switchTab('login');
+                    document.getElementById('loginEmail').value = email;
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Social login
+        function socialLogin(provider) {
+            showLoading();
+            
+            setTimeout(() => {
+                hideLoading();
+                showSuccess(`正在通过${provider}登录...`);
+                
+                // Simulate social login
+                setTimeout(() => {
+                    localStorage.setItem('userLoggedIn', 'true');
+                    localStorage.setItem('userProvider', provider);
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 1000);
+        }
+        
+        // Forgot password
+        function showForgotPassword() {
+            const email = prompt('请输入您的邮箱地址：');
+            if (email) {
+                showSuccess('密码重置链接已发送到您的邮箱');
+            }
+        }
+        
+        // Check if user is already logged in
+        if (localStorage.getItem('userLoggedIn') === 'true') {
+            showSuccess('您已登录，正在跳转...');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+        
+        // Console welcome message
+        console.log(`
+        🦗 Siiksong User Authentication
+        
+        Features:
+        - Login/Register forms
+        - Social authentication
+        - Password recovery
+        - Remember me functionality
+        - Form validation
+        - Loading states
+        - Error handling
+        
+        Demo credentials:
+        Email: test@example.com
+        Password: password
+        `);
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siiksong - Your Ultimate Hollow Knight: Silksong Companion</title>
+    <meta name="description" content="Master Pharloom with expert guides, interactive maps, boss strategies, and community support for Hollow Knight: Silksong">
+    <meta name="keywords" content="Silksong, Hollow Knight, boss guide, walkthrough, Pharloom, Hornet, game guide, 空洞骑士, 丝之歌, 攻略, 指南">
+    <meta name="author" content="Siiksong Team">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="zh-CN">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Siiksong",
+        "url": "https://siiksong.store",
+        "description": "Your ultimate companion for Hollow Knight: Silksong - Expert guides, interactive maps, and community support",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Siiksong Team",
+            "url": "https://siiksong.store"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://siiksong.store/?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Siiksong - Ultimate Silksong Companion">
+    <meta property="og:description" content="Expert guides, interactive maps, and community support for Hollow Knight: Silksong">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://siiksong.store">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦗</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 0.5rem 1rem;
+            width: 300px;
+        }
+        
+        .search-box input {
+            background: none;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 100%;
+            padding: 0.5rem;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            margin-left: 1rem;
+        }
+        
+        .language-selector select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: #2c3e50;
+            color: #fff;
+        }
+        
+        .language-selector select:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        /* User Account */
+        .user-account {
+            margin-left: 1rem;
+        }
+        
+        .auth-link {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .auth-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #4ecdc4;
+        }
+        
+        .user-menu {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .user-name {
+            color: #fff;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .user-name:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #4ecdc4;
+        }
+        
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 150px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .user-menu:hover .user-dropdown {
+            display: block;
+        }
+        
+        .user-dropdown a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .user-dropdown a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #4ecdc4;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            color: #fff;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        /* Quick Access Grid */
+        .quick-access {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 3rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .card h3 {
+            color: #fff;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-link {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .card-link:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Interactive Map Section */
+        .map-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .map-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .map-points {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .map-point {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .map-point:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Community Section */
+        .community {
+            padding: 80px 0;
+        }
+        
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .community-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .community-card h4 {
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+        
+        .community-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        /* News Section */
+        .news {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .news-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .news-item h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .news-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+        
+        .news-date {
+            color: #4ecdc4;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 3rem 0 2rem;
+            text-align: center;
+            color: #fff;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4ecdc4;
+        }
+        
+        .footer p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .search-box {
+                width: 200px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .map-points {
+                flex-direction: column;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #4ecdc4;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Game Info Styles */
+        .game-info {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .info-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .info-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .info-card p {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        
+        .game-description {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .game-description h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .game-description p {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        /* System Requirements Styles */
+        .system-requirements {
+            padding: 80px 0;
+        }
+        
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .req-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .req-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .req-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .req-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .req-label {
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .req-value {
+            color: #4ecdc4;
+        }
+        
+        /* Wishlist Styles */
+        .wishlist-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .store-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .store-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .store-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #4ecdc4;
+        }
+        
+        .store-btn.steam:hover {
+            border-color: #1b2838;
+            background: rgba(27, 40, 56, 0.3);
+        }
+        
+        .store-btn.nintendo:hover {
+            border-color: #e60012;
+            background: rgba(230, 0, 18, 0.3);
+        }
+        
+        .store-btn.xbox:hover {
+            border-color: #107c10;
+            background: rgba(16, 124, 16, 0.3);
+        }
+        
+        .store-btn.playstation:hover {
+            border-color: #003791;
+            background: rgba(0, 55, 145, 0.3);
+        }
+        
+        .store-icon {
+            font-size: 2rem;
+        }
+        
+        /* Player Reviews Styles */
+        .player-reviews {
+            padding: 80px 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            border-left: 4px solid #4ecdc4;
+            transition: all 0.3s ease;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .review-text {
+            color: #fff;
+            font-style: italic;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .review-author {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-rating {
+            color: #f1c40f;
+            font-size: 1.2rem;
+        }
+        
+        /* Similar Games Styles */
+        .similar-games {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .game-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .game-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .game-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .game-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .game-link {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .game-link:hover {
+            color: #ff6b6b;
+        }
+        
+        /* Team Info Styles */
+        .team-info {
+            padding: 80px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .member-avatar {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .team-member h3 {
+            color: #4ecdc4;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .team-member p {
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        /* FAQ Styles */
+        .faq {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .faq-item h3 {
+            color: #fff;
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 1.2rem;
+            position: relative;
+        }
+        
+        .faq-item h3::after {
+            content: '+';
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #4ecdc4;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active h3::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+        
+        .faq-answer p {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0 1.5rem 1.5rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        /* Comments Section Styles */
+        .comments-section {
+            padding: 80px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .comment-form-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .comment-form {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .comment-user-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+        
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .user-details {
+            text-align: center;
+        }
+        
+        .user-details .user-name {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: block;
+        }
+        
+        .user-details .comment-time {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+        
+        .comment-input-container {
+            flex: 1;
+        }
+        
+        .comment-input-container textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            color: #fff;
+            font-size: 1rem;
+            resize: vertical;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        
+        .comment-input-container textarea:focus {
+            border-color: #4ecdc4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .comment-input-container textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .comment-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .comment-submit {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .comment-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .comment-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .comment-tools {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .tool-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+        
+        .tool-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .comments-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .comment-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .comment-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .comment-content p {
+            color: #fff;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .comment-content .comment-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .action-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+        
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #4ecdc4;
+            border-color: #4ecdc4;
+        }
+        
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .load-more-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .load-more-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #4ecdc4;
+            color: #4ecdc4;
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile responsive for comments */
+        @media (max-width: 768px) {
+            .comment-form {
+                flex-direction: column;
+            }
+            
+            .comment-user-info {
+                flex-direction: row;
+                justify-content: flex-start;
+                margin-bottom: 1rem;
+            }
+            
+            .comment-actions {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .comment-tools {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="#guides">Guides</a></li>
+                <li><a href="#map">Map</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#game-info">Game Info</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#news">News</a></li>
+                <li><a href="siiksong-features.html">Features</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Search guides, bosses, tips..." id="searchInput">
+                <span style="color: #fff; margin-left: 0.5rem;">🔍</span>
+            </div>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select id="languageSelector" onchange="changeLanguage(this.value)">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+            
+            <!-- User Account -->
+            <div class="user-account" id="userAccount">
+                <div class="user-logged-out">
+                    <a href="auth.html" class="auth-link">登录</a>
+                    <a href="auth.html" class="auth-link">注册</a>
+                </div>
+                <div class="user-logged-in" style="display: none;">
+                    <div class="user-menu">
+                        <span class="user-name" id="userName">用户</span>
+                        <div class="user-dropdown">
+                            <a href="profile.html">个人资料</a>
+                            <a href="favorites.html">我的收藏</a>
+                            <a href="#" onclick="logout()">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Pharloom</h1>
+            <p>Your ultimate companion for Hollow Knight: Silksong - Expert guides, interactive maps, and community support</p>
+            <div class="cta-buttons">
+                <a href="#guides" class="btn btn-primary">Start Your Journey</a>
+                <a href="#community" class="btn btn-secondary">Join Community</a>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">50K+</span>
+                    <span class="stat-label">Players Helped</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Expert Guides</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15K+</span>
+                    <span class="stat-label">Community Members</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google AdSense Banner Ad -->
+    <div style="text-align: center; margin: 2rem 0; padding: 1rem; background: rgba(255, 255, 255, 0.05); border-radius: 10px;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7208260866318884"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Quick Access Grid -->
+    <section class="quick-access" id="guides">
+        <div class="container">
+            <h2 class="section-title">Everything You Need to Master Silksong</h2>
+            <div class="grid">
+                <div class="card" onclick="window.location.href='siiksong-features.html#boss-guides'">
+                    <span class="card-icon">⚔️</span>
+                    <h3>Boss Guides</h3>
+                    <p>Step-by-step strategies for every boss in Pharloom. From Lace to the final encounter, master every fight.</p>
+                    <a href="siiksong-features.html#boss-guides" class="card-link">Explore Boss Guides →</a>
+                </div>
+                
+                <div class="card" onclick="window.location.href='siiksong-features.html#interactive-map'">
+                    <span class="card-icon">🗺️</span>
+                    <h3>Interactive Map</h3>
+                    <p>Discover every secret, collectible, and hidden area in Pharloom with our detailed interactive map.</p>
+                    <a href="siiksong-features.html#interactive-map" class="card-link">Explore Map →</a>
+                </div>
+                
+                <div class="card" onclick="window.location.href='siiksong-features.html#build-calculator'">
+                    <span class="card-icon">⚡</span>
+                    <h3>Build Calculator</h3>
+                    <p>Optimize your Crest and Mana combinations for maximum effectiveness in combat and exploration.</p>
+                    <a href="siiksong-features.html#build-calculator" class="card-link">Try Calculator →</a>
+                </div>
+                
+                <div class="card" onclick="window.location.href='siiksong-features.html#speedrun-routes'">
+                    <span class="card-icon">🏃</span>
+                    <h3>Speedrun Routes</h3>
+                    <p>Learn the fastest paths through Pharloom with detailed speedrun strategies and time-saving tips.</p>
+                    <a href="siiksong-features.html#speedrun-routes" class="card-link">View Routes →</a>
+                </div>
+                
+                <div class="card" onclick="window.location.href='siiksong-features.html#mods-tools'">
+                    <span class="card-icon">🔧</span>
+                    <h3>Mods & Tools</h3>
+                    <p>Enhance your Silksong experience with curated mods, custom skins, and gameplay modifications.</p>
+                    <a href="siiksong-features.html#mods-tools" class="card-link">Browse Mods →</a>
+                </div>
+                
+                <div class="card" onclick="window.location.href='siiksong-features.html#lore-theories'">
+                    <span class="card-icon">📚</span>
+                    <h3>Lore & Theories</h3>
+                    <p>Dive deep into Pharloom's mysteries with community theories, character analysis, and story insights.</p>
+                    <a href="siiksong-features.html#lore-theories" class="card-link">Read Lore →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map Section -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <h2 class="section-title">Explore Pharloom</h2>
+            <div class="map-container">
+                <p style="color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">
+                    Click on any area to discover secrets, bosses, and collectibles
+                </p>
+                <div class="map-placeholder">
+                    <div>
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                        <div>Interactive Pharloom Map</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">Coming Soon - Full Interactive Experience</div>
+                    </div>
+                </div>
+                <div class="map-points">
+                    <div class="map-point" onclick="showLocation('citadel')">
+                        <strong>Citadel Spire</strong><br>
+                        <small>Main Hub Area</small>
+                    </div>
+                    <div class="map-point" onclick="showLocation('bonebottom')">
+                        <strong>Bonebottom</strong><br>
+                        <small>Underground Caverns</small>
+                    </div>
+                    <div class="map-point" onclick="showLocation('mossmire')">
+                        <strong>Mossmire</strong><br>
+                        <small>Swamp Region</small>
+                    </div>
+                    <div class="map-point" onclick="showLocation('silkfalls')">
+                        <strong>Silkfalls</strong><br>
+                        <small>Waterfall Area</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <h2 class="section-title">Join Our Community</h2>
+            <div class="community-grid">
+                <div class="community-card">
+                    <h4>💬 Daily Discussions</h4>
+                    <p>Share strategies, ask questions, and connect with fellow Silksong players in our active community forums.</p>
+                </div>
+                <div class="community-card">
+                    <h4>🎨 Fan Art Gallery</h4>
+                    <p>Showcase your Silksong-inspired artwork, cosplay, and creative projects in our community gallery.</p>
+                </div>
+                <div class="community-card">
+                    <h4>🏆 Weekly Challenges</h4>
+                    <p>Participate in community challenges, speedrun competitions, and achievement showcases.</p>
+                </div>
+                <div class="community-card">
+                    <h4>🤝 Help & Support</h4>
+                    <p>Get help from experienced players, share tips, and support newcomers to the Silksong community.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn btn-primary" onclick="joinCommunity()">Join Community</a>
+                <a href="#" class="btn btn-secondary" onclick="viewDiscord()">Discord Server</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Info Section -->
+    <section class="game-info" id="game-info">
+        <div class="container">
+            <h2 class="section-title">关于《空洞骑士：丝之歌》</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎮</div>
+                    <h3>游戏类型</h3>
+                    <p>类银河战士恶魔城 (Metroidvania)</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <h3>发布日期</h3>
+                    <p>2025年9月4日</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🏢</div>
+                    <h3>开发团队</h3>
+                    <p>Team Cherry (澳大利亚)</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3>游戏时长</h3>
+                    <p>预计15-20小时</p>
+                </div>
+            </div>
+            
+            <div class="game-description">
+                <h3>游戏简介</h3>
+                <p>致命的猎人Hornet发现自己独自在一个广阔而陌生的王国中。她必须与敌人战斗，寻找盟友，并解决谜题，在她前往王国巅峰的致命朝圣之旅中。</p>
+                <p>Hornet必须掌握一套全新的强大动作来生存。她将释放毁灭性的攻击，学习令人难以置信的丝绸能力，并制作致命的工具来克服王国的挑战。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements Section -->
+    <section class="system-requirements" id="system-requirements">
+        <div class="container">
+            <h2 class="section-title">系统要求</h2>
+            <div class="requirements-grid">
+                <div class="req-card">
+                    <h3>最低配置</h3>
+                    <div class="req-list">
+                        <div class="req-item">
+                            <span class="req-label">操作系统:</span>
+                            <span class="req-value">Windows 7</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">处理器:</span>
+                            <span class="req-value">Intel Core 2 Duo E5200</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">内存:</span>
+                            <span class="req-value">4 GB RAM</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">显卡:</span>
+                            <span class="req-value">GeForce 9800GTX+ (1GB)</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">存储:</span>
+                            <span class="req-value">9 GB 可用空间</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="req-card">
+                    <h3>推荐配置</h3>
+                    <div class="req-list">
+                        <div class="req-item">
+                            <span class="req-label">操作系统:</span>
+                            <span class="req-value">Windows 10</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">处理器:</span>
+                            <span class="req-value">Intel Core i5</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">内存:</span>
+                            <span class="req-value">8 GB RAM</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">显卡:</span>
+                            <span class="req-value">GeForce GTX 560+</span>
+                        </div>
+                        <div class="req-item">
+                            <span class="req-label">存储:</span>
+                            <span class="req-value">9 GB 可用空间</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Section -->
+    <section class="wishlist-section" id="wishlist">
+        <div class="container">
+            <h2 class="section-title">添加到愿望单</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 2rem; font-size: 1.1rem;">
+                准备好体验Hornet的史诗之旅了吗？添加到愿望单，第一时间获得游戏发布通知！
+            </p>
+            <div class="store-links">
+                <a href="#" class="store-btn steam" onclick="addToWishlist('steam')">
+                    <span class="store-icon">🎮</span>
+                    Steam 愿望单
+                </a>
+                <a href="#" class="store-btn nintendo" onclick="addToWishlist('nintendo')">
+                    <span class="store-icon">🎮</span>
+                    Nintendo Switch
+                </a>
+                <a href="#" class="store-btn xbox" onclick="addToWishlist('xbox')">
+                    <span class="store-icon">🎮</span>
+                    Xbox Game Pass
+                </a>
+                <a href="#" class="store-btn playstation" onclick="addToWishlist('playstation')">
+                    <span class="store-icon">🎮</span>
+                    PlayStation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Player Reviews Section -->
+    <section class="player-reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">玩家评价</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                基于公开演示、预览和开发者采访的社区反馈
+            </p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-text">
+                        "我在PAX试玩了演示版，完全被震撼了。Hornet的移动感觉如此流畅和响应。这绝对会超越原版！"
+                    </div>
+                    <div class="review-author">- Alex P.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "从目前看到的美术风格绝对令人惊艳。Team Cherry在环境和角色设计上超越了自己。等不及完整版了！"
+                    </div>
+                    <div class="review-author">- Maya K.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "Silksong发布的音乐样本令人难以置信。Christopher Larkin是天才。我一直在重复听预告片，等不及听完整配乐！"
+                    </div>
+                    <div class="review-author">- Takashi R.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-text">
+                        "Silksong中的战斗看起来比空洞骑士更加快节奏和动态。Hornet的丝绸能力为游戏玩法创造了全新的维度。对我来说是首日购买！"
+                    </div>
+                    <div class="review-author">- Elena S.</div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Similar Games Section -->
+    <section class="similar-games" id="similar-games">
+        <div class="container">
+            <h2 class="section-title">等待期间可以玩的游戏</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                在等待Silksong发布期间，这些游戏可以满足您对类银河战士恶魔城游戏的渴望
+            </p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon">🦋</div>
+                    <h3>Ori and the Will of the Wisps</h3>
+                    <p>美丽的类银河战士恶魔城游戏，拥有令人惊叹的视觉效果和感人的故事</p>
+                    <a href="#" class="game-link" onclick="viewGame('ori')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">⚔️</div>
+                    <h3>Dead Cells</h3>
+                    <p>快节奏的rogue-like动作游戏，结合了类银河战士恶魔城的探索元素</p>
+                    <a href="#" class="game-link" onclick="viewGame('deadcells')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🏔️</div>
+                    <h3>Celeste</h3>
+                    <p>挑战性的平台跳跃游戏，拥有精美的像素艺术和感人的故事</p>
+                    <a href="#" class="game-link" onclick="viewGame('celeste')">了解更多 →</a>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon">🌙</div>
+                    <h3>Hollow Knight</h3>
+                    <p>原版游戏！如果您还没有体验过，现在正是时候</p>
+                    <a href="#" class="game-link" onclick="viewGame('hollowknight')">了解更多 →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Info Section -->
+    <section class="team-info" id="team">
+        <div class="container">
+            <h2 class="section-title">开发团队 Team Cherry</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                《空洞骑士：丝之歌》由澳大利亚阿德莱德的Team Cherry开发。我们是一个3人团队，除了制作游戏外，还负责构建网站、制作游戏预告片等等。
+            </p>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">👨‍🎨</div>
+                    <h3>Ari Gibson</h3>
+                    <p>负责游戏设计和美术，创造游戏的艺术、环境和数百个虫子的动画。</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>William Pellen</h3>
+                    <p>负责游戏设计，创造敌人、Boss和游戏行为。如果敌人太有挑战性，就怪他！</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">👨‍💻</div>
+                    <h3>Jack Vine</h3>
+                    <p>Silksong的超级天才程序员，构建系统、优化和添加全新的激动人心的功能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">常见问题</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                关于《空洞骑士：丝之歌》的一切您需要了解的信息
+            </p>
+            <div class="faq-list">
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏什么时候发布？</h3>
+                    <div class="faq-answer">
+                        <p>根据2025年4月2日任天堂直面会确认，游戏将于2025年9月4日发布。Team Cherry正在努力完善游戏，确保为玩家提供最佳体验。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>需要先玩原版《空洞骑士》吗？</h3>
+                    <div class="faq-answer">
+                        <p>虽然不强制要求，但强烈建议先体验原版游戏以更好地理解游戏世界和角色背景。Silksong是Hornet的独立冒险，但与原版游戏有深层的联系。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏支持哪些平台？</h3>
+                    <div class="faq-answer">
+                        <p>游戏将支持Windows、Mac、Linux和Nintendo Switch。其他平台如PlayStation和Xbox可能稍后公布。游戏还将支持Xbox Game Pass。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏时长有多长？</h3>
+                    <div class="faq-answer">
+                        <p>根据Team Cherry的估计，游戏时长约为15-20小时，具体取决于玩家的探索程度和技能水平。这比原版游戏稍短，但内容更加紧凑。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>Hornet有哪些新能力？</h3>
+                    <div class="faq-answer">
+                        <p>Hornet拥有全新的移动系统，包括跳跃、滑翔和一系列武器技能。她还可以使用丝绸能力来创造平台、攻击敌人和解决谜题。</p>
+                    </div>
+                </div>
+                <div class="faq-item" onclick="toggleFAQ(this)">
+                    <h3>游戏会有DLC吗？</h3>
+                    <div class="faq-answer">
+                        <p>Team Cherry尚未公布DLC计划，但考虑到原版游戏的免费DLC支持，Silksong很可能也会有额外的内容更新。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news" id="news">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+        <div class="news-item">
+            <h4>🎮 《空洞骑士：丝之歌》2025年9月4日正式发布</h4>
+            <p>Team Cherry在2025年4月2日的任天堂直面会上正式确认，《空洞骑士：丝之歌》将于2025年9月4日发布。这款备受期待的续作将为玩家带来全新的冒险体验。</p>
+            <div class="news-date">2024年12月15日</div>
+        </div>
+        <div class="news-item">
+            <h4>🏆 社区速通记录更新 - 新世界纪录诞生</h4>
+            <p>玩家"SilkMaster"在《空洞骑士：丝之歌》演示版中创造了新的Any%速通世界纪录，时间为1小时23分45秒，比之前的记录快了2分钟。这展示了社区对游戏机制的深入理解。</p>
+            <div class="news-date">2024年12月12日</div>
+        </div>
+        <div class="news-item">
+            <h4>📚 全新Boss攻略：Lace第二阶段策略详解</h4>
+            <p>我们的社区专家制作了Lace第二阶段的全新攻略，包含精确的闪避时机和反击窗口分析。这份攻略将帮助玩家更好地掌握这个挑战性Boss的战斗模式。</p>
+            <div class="news-date">2024年12月10日</div>
+        </div>
+        <div class="news-item">
+            <h4>🔧 模组推荐：自定义徽章皮肤合集</h4>
+            <p>本周推荐的模组展示了我们才华横溢的模组社区创作的精美自定义徽章皮肤。这些皮肤不仅美观，还能提升游戏体验。</p>
+            <div class="news-date">2024年12月8日</div>
+        </div>
+        <div class="news-item">
+            <h4>🗺️ 法洛姆王国地图探索指南更新</h4>
+            <p>我们更新了法洛姆王国的交互式地图，新增了Citadel Spire、Bonebottom、Mossmire和Silkfalls四个主要区域的详细探索指南。</p>
+            <div class="news-date">2024年12月5日</div>
+        </div>
+        <div class="news-item">
+            <h4>⚡ 法力系统深度解析：优化你的战斗策略</h4>
+            <p>深入分析《丝之歌》中的法力系统，包括法力再生机制、法力消耗优化和不同法力类型的战术应用。这份指南将帮助玩家制定更有效的战斗策略。</p>
+            <div class="news-date">2024年12月3日</div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Comments Section -->
+    <section class="comments-section" id="comments">
+        <div class="container">
+            <h2 class="section-title">社区讨论</h2>
+            <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
+                分享您的想法，与其他玩家交流经验
+            </p>
+            
+            <!-- Comment Form -->
+            <div class="comment-form-container">
+                <div class="comment-form">
+                    <div class="comment-user-info">
+                        <div class="user-avatar" id="commentUserAvatar">👤</div>
+                        <div class="user-details">
+                            <span class="user-name" id="commentUserName">游客</span>
+                            <span class="comment-time">现在</span>
+                        </div>
+                    </div>
+                    <div class="comment-input-container">
+                        <textarea id="commentInput" placeholder="分享您的想法..." rows="4"></textarea>
+                        <div class="comment-actions">
+                            <button class="comment-submit" onclick="submitComment()">发布评论</button>
+                            <div class="comment-tools">
+                                <button class="tool-btn" onclick="insertEmoji('😀')">😀</button>
+                                <button class="tool-btn" onclick="insertEmoji('🎮')">🎮</button>
+                                <button class="tool-btn" onclick="insertEmoji('⚔️')">⚔️</button>
+                                <button class="tool-btn" onclick="insertEmoji('🦗')">🦗</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Comments List -->
+            <div class="comments-list" id="commentsList">
+                <!-- Sample comments -->
+                <div class="comment-item">
+                    <div class="comment-user-info">
+                        <div class="user-avatar">🦗</div>
+                        <div class="user-details">
+                            <span class="user-name">SilkMaster</span>
+                            <span class="comment-time">2小时前</span>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>终于等到丝之歌了！从预告片看，Hornet的移动系统比原版更加流畅，等不及要体验新的战斗机制了！</p>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">👍 12</button>
+                            <button class="action-btn" onclick="replyComment(this)">💬 回复</button>
+                            <button class="action-btn" onclick="shareComment(this)">📤 分享</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <div class="comment-user-info">
+                        <div class="user-avatar">⚔️</div>
+                        <div class="user-details">
+                            <span class="user-name">BossHunter</span>
+                            <span class="comment-time">5小时前</span>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>Team Cherry在PAX展示的Boss设计太棒了！每个Boss都有独特的攻击模式，挑战性比原版更高。</p>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">👍 8</button>
+                            <button class="action-btn" onclick="replyComment(this)">💬 回复</button>
+                            <button class="action-btn" onclick="shareComment(this)">📤 分享</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comment-item">
+                    <div class="comment-user-info">
+                        <div class="user-avatar">🎵</div>
+                        <div class="user-details">
+                            <span class="user-name">MusicLover</span>
+                            <span class="comment-time">1天前</span>
+                        </div>
+                    </div>
+                    <div class="comment-content">
+                        <p>Christopher Larkin的音乐一如既往地出色！预告片中的背景音乐已经让我循环播放了无数遍。</p>
+                        <div class="comment-actions">
+                            <button class="action-btn" onclick="likeComment(this)">👍 15</button>
+                            <button class="action-btn" onclick="replyComment(this)">💬 回复</button>
+                            <button class="action-btn" onclick="shareComment(this)">📤 分享</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Load More Comments -->
+            <div class="load-more-container">
+                <button class="load-more-btn" onclick="loadMoreComments()">加载更多评论</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#guides">Guides</a>
+                <a href="#map">Map</a>
+                <a href="#community">Community</a>
+                <a href="#news">News</a>
+                <a href="about.html">About</a>
+                <a href="auth.html">Contact</a>
+                <a href="privacy-policy.html">Privacy</a>
+                <a href="terms-of-service.html">Terms</a>
+            </div>
+            <p>&copy; 2024 Siiksong.store - Your Ultimate Silksong Companion. Not affiliated with Team Cherry.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p style="color: #fff; margin-top: 1rem;">Loading content...</p>
+    </div>
+
+    <script>
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            if (query.length > 2) {
+                // Simulate search results
+                console.log('Searching for:', query);
+                // In a real implementation, this would trigger a search API call
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Card click handlers
+        function showGuide(type) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                // Simulate content loading
+                alert(`Loading ${type} content...\n\nThis would show detailed ${type} information in a real implementation.`);
+            }, 1000);
+        }
+
+        function showLocation(location) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const locationNames = {
+                    'citadel': 'Citadel Spire',
+                    'bonebottom': 'Bonebottom',
+                    'mossmire': 'Mossmire',
+                    'silkfalls': 'Silkfalls'
+                };
+                alert(`Exploring ${locationNames[location]}...\n\nThis would show detailed information about ${locationNames[location]} including secrets, collectibles, and boss locations.`);
+            }, 800);
+        }
+
+        function joinCommunity() {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                alert('Redirecting to community registration...\n\nThis would redirect to a community signup page in a real implementation.');
+            }, 1000);
+        }
+
+        function viewDiscord() {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                alert('Opening Discord server...\n\nThis would redirect to the Discord server in a real implementation.');
+            }, 800);
+        }
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate stats on scroll
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.textContent.replace(/[^\d]/g, ''));
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = stat.textContent.replace(/\d+/, Math.floor(current));
+                }, 30);
+            });
+        }
+
+        // Trigger animation when stats come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        observer.observe(document.querySelector('.stats'));
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '/' && !e.target.matches('input')) {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        // Add search suggestions (simplified)
+        const searchSuggestions = [
+            'Lace boss guide',
+            'Mana regeneration tips',
+            'Crest combinations',
+            'Hidden areas',
+            'Speedrun routes',
+            'Mod installation',
+            'Pharloom map',
+            'Silksong endings'
+        ];
+
+        document.getElementById('searchInput').addEventListener('focus', function() {
+            // In a real implementation, this would show search suggestions
+            console.log('Search suggestions:', searchSuggestions);
+        });
+
+        // Add some visual feedback for interactions
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Console welcome message
+        console.log(`
+        🦗 Welcome to Siiksong!
+        
+        This is a demo single-page application showcasing the core features
+        for a Hollow Knight: Silksong companion website.
+        
+        Features demonstrated:
+        - Responsive design
+        - Interactive navigation
+        - Search functionality
+        - Community integration
+        - News updates
+        - Smooth animations
+        - Game information
+        - System requirements
+        - FAQ system
+        - Player reviews
+        - Similar games
+        - Team information
+        - Multi-language support
+        - User authentication system
+        
+        Built with vanilla HTML, CSS, and JavaScript for maximum compatibility.
+        `);
+        
+        // User authentication functions
+        function checkUserLogin() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const userEmail = localStorage.getItem('userEmail');
+            
+            if (isLoggedIn && userEmail) {
+                document.querySelector('.user-logged-out').style.display = 'none';
+                document.querySelector('.user-logged-in').style.display = 'block';
+                document.getElementById('userName').textContent = userEmail.split('@')[0];
+            } else {
+                document.querySelector('.user-logged-out').style.display = 'block';
+                document.querySelector('.user-logged-in').style.display = 'none';
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userProvider');
+            localStorage.removeItem('rememberMe');
+            
+            // Show logout message
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = '已成功退出登录';
+            successDiv.style.position = 'fixed';
+            successDiv.style.top = '100px';
+            successDiv.style.right = '20px';
+            successDiv.style.zIndex = '10000';
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.remove();
+                checkUserLogin();
+            }, 3000);
+        }
+        
+        // Initialize user login status
+        checkUserLogin();
+        
+        // Comments system functions
+        function submitComment() {
+            const commentInput = document.getElementById('commentInput');
+            const commentText = commentInput.value.trim();
+            
+            if (!commentText) {
+                alert('请输入评论内容');
+                return;
+            }
+            
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                alert('请先登录后再发表评论');
+                return;
+            }
+            
+            // Create new comment
+            const newComment = createCommentElement(commentText);
+            const commentsList = document.getElementById('commentsList');
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+            
+            // Clear input
+            commentInput.value = '';
+            
+            // Show success message
+            showCommentSuccess('评论发布成功！');
+        }
+        
+        function createCommentElement(text) {
+            const commentDiv = document.createElement('div');
+            commentDiv.className = 'comment-item';
+            
+            const userEmail = localStorage.getItem('userEmail') || 'test@example.com';
+            const userName = userEmail.split('@')[0];
+            const userAvatar = getRandomAvatar();
+            
+            commentDiv.innerHTML = `
+                <div class="comment-user-info">
+                    <div class="user-avatar">${userAvatar}</div>
+                    <div class="user-details">
+                        <span class="user-name">${userName}</span>
+                        <span class="comment-time">刚刚</span>
+                    </div>
+                </div>
+                <div class="comment-content">
+                    <p>${text}</p>
+                    <div class="comment-actions">
+                        <button class="action-btn" onclick="likeComment(this)">👍 0</button>
+                        <button class="action-btn" onclick="replyComment(this)">💬 回复</button>
+                        <button class="action-btn" onclick="shareComment(this)">📤 分享</button>
+                    </div>
+                </div>
+            `;
+            
+            return commentDiv;
+        }
+        
+        function getRandomAvatar() {
+            const avatars = ['🦗', '⚔️', '🎮', '🎵', '🌟', '🔥', '💎', '🎯'];
+            return avatars[Math.floor(Math.random() * avatars.length)];
+        }
+        
+        function likeComment(button) {
+            const currentLikes = parseInt(button.textContent.match(/\d+/)[0]);
+            button.textContent = `👍 ${currentLikes + 1}`;
+            button.style.color = '#4ecdc4';
+        }
+        
+        function replyComment(button) {
+            const commentItem = button.closest('.comment-item');
+            const userName = commentItem.querySelector('.user-name').textContent;
+            
+            const replyText = prompt(`回复 ${userName}:`);
+            if (replyText) {
+                showCommentSuccess(`回复 ${userName}: ${replyText}`);
+            }
+        }
+        
+        function shareComment(button) {
+            const commentItem = button.closest('.comment-item');
+            const commentText = commentItem.querySelector('p').textContent;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Siiksong 评论',
+                    text: commentText,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback: copy to clipboard
+                navigator.clipboard.writeText(commentText).then(() => {
+                    showCommentSuccess('评论已复制到剪贴板');
+                });
+            }
+        }
+        
+        function insertEmoji(emoji) {
+            const commentInput = document.getElementById('commentInput');
+            const cursorPos = commentInput.selectionStart;
+            const textBefore = commentInput.value.substring(0, cursorPos);
+            const textAfter = commentInput.value.substring(cursorPos);
+            
+            commentInput.value = textBefore + emoji + textAfter;
+            commentInput.focus();
+            commentInput.setSelectionRange(cursorPos + emoji.length, cursorPos + emoji.length);
+        }
+        
+        function loadMoreComments() {
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            loadMoreBtn.textContent = '加载中...';
+            loadMoreBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Simulate loading more comments
+                const commentsList = document.getElementById('commentsList');
+                const newComment = createCommentElement('这是加载的更多评论内容...');
+                commentsList.appendChild(newComment);
+                
+                loadMoreBtn.textContent = '加载更多评论';
+                loadMoreBtn.disabled = false;
+            }, 1500);
+        }
+        
+        function showCommentSuccess(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+            successDiv.style.position = 'fixed';
+            successDiv.style.top = '100px';
+            successDiv.style.right = '20px';
+            successDiv.style.zIndex = '10000';
+            successDiv.style.background = 'rgba(46, 204, 113, 0.9)';
+            successDiv.style.color = '#fff';
+            successDiv.style.padding = '1rem 2rem';
+            successDiv.style.borderRadius = '8px';
+            successDiv.style.border = '1px solid #2ecc71';
+            document.body.appendChild(successDiv);
+            
+            setTimeout(() => {
+                successDiv.remove();
+            }, 3000);
+        }
+        
+        // Update comment form based on login status
+        function updateCommentForm() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const userEmail = localStorage.getItem('userEmail');
+            
+            if (isLoggedIn && userEmail) {
+                document.getElementById('commentUserAvatar').textContent = getRandomAvatar();
+                document.getElementById('commentUserName').textContent = userEmail.split('@')[0];
+            } else {
+                document.getElementById('commentUserAvatar').textContent = '👤';
+                document.getElementById('commentUserName').textContent = '游客';
+            }
+        }
+        
+        // Initialize comment form
+        updateCommentForm();
+        
+        // New functionality for added sections
+        function addToWishlist(platform) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const platformNames = {
+                    'steam': 'Steam',
+                    'nintendo': 'Nintendo Switch',
+                    'xbox': 'Xbox Game Pass',
+                    'playstation': 'PlayStation'
+                };
+                alert(`正在将《空洞骑士：丝之歌》添加到${platformNames[platform]}愿望单...\n\n在真实实现中，这将重定向到相应的商店页面。`);
+            }, 1000);
+        }
+        
+        function viewGame(gameName) {
+            showLoading();
+            setTimeout(() => {
+                hideLoading();
+                const gameNames = {
+                    'ori': 'Ori and the Will of the Wisps',
+                    'deadcells': 'Dead Cells',
+                    'celeste': 'Celeste',
+                    'hollowknight': 'Hollow Knight'
+                };
+                alert(`正在查看${gameNames[gameName]}的详细信息...\n\n在真实实现中，这将重定向到游戏商店页面或详细信息页面。`);
+            }, 800);
+        }
+        
+        function toggleFAQ(faqItem) {
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ item
+            faqItem.classList.toggle('active');
+        }
+        
+        // Add click handlers for new sections
+        document.querySelectorAll('.info-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.review-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px) scale(1.01)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        document.querySelectorAll('.team-member').forEach(member => {
+            member.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            member.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+        
+        // Add animation for new sections when they come into view
+        const newSections = document.querySelectorAll('.game-info, .system-requirements, .wishlist-section, .player-reviews, .similar-games, .team-info, .faq');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        newSections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            sectionObserver.observe(section);
+        });
+    </script>
+    
+    <!-- Language Support Script -->
+    <script src="js/language.js"></script>
+</body>
+</html>
