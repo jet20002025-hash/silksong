@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的收藏 - Siiksong</title>
+    <meta name="description" content="Siiksong用户收藏的攻略和内容">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.5rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            color: #2980b9;
+        }
+        
+        .favorites-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            background: #ecf0f1;
+            border-radius: 10px;
+            padding: 0.5rem;
+        }
+        
+        .tab-button {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        
+        .tab-button.active {
+            background: #4ecdc4;
+            color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .favorites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .favorite-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .favorite-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .favorite-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .favorite-description {
+            color: #7f8c8d;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .favorite-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .favorite-date {
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+        
+        .favorite-type {
+            background: #4ecdc4;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .favorite-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-view {
+            background: #3498db;
+            color: #fff;
+        }
+        
+        .btn-remove {
+            background: #e74c3c;
+            color: #fff;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #7f8c8d;
+        }
+        
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .search-box {
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-input:focus {
+            border-color: #4ecdc4;
+        }
+        
+        .stats-summary {
+            background: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .favorites-tabs {
+                flex-direction: column;
+            }
+            
+            .favorites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回首页</a>
+        
+        <h1>我的收藏</h1>
+        
+        <div class="stats-summary">
+            <div class="stat-item">
+                <span class="stat-number" id="totalFavorites">8</span>
+                <span class="stat-label">总收藏</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="bossGuides">3</span>
+                <span class="stat-label">Boss攻略</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="mapAreas">2</span>
+                <span class="stat-label">地图区域</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="builds">3</span>
+                <span class="stat-label">构建配置</span>
+            </div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="搜索收藏内容..." id="searchInput">
+        </div>
+        
+        <div class="favorites-tabs">
+            <button class="tab-button active" onclick="switchTab('all')">全部</button>
+            <button class="tab-button" onclick="switchTab('boss')">Boss攻略</button>
+            <button class="tab-button" onclick="switchTab('map')">地图区域</button>
+            <button class="tab-button" onclick="switchTab('build')">构建配置</button>
+        </div>
+        
+        <!-- 全部收藏 -->
+        <div id="all-tab" class="tab-content active">
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-title">Lace Boss攻略</div>
+                    <div class="favorite-description">详细的Lace Boss战斗策略，包含第一阶段和第二阶段的所有技巧和时机。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-15</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('lace-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('lace-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Citadel Spire探索指南</div>
+                    <div class="favorite-description">法洛姆王国主要区域的完整探索指南，包含所有隐藏区域和收集品位置。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-14</span>
+                        <span class="favorite-type">地图区域</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('citadel-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('citadel-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">高伤害构建配置</div>
+                    <div class="favorite-description">力量徽章+法力徽章的高伤害组合，适合有经验的玩家使用。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-13</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('damage-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('damage-build')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Sharpshadow Boss攻略</div>
+                    <div class="favorite-description">暗影Boss的完整战斗指南，包含阴影阶段和最终阶段的策略。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-12</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('sharpshadow-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('sharpshadow-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Bonebottom地下洞穴</div>
+                    <div class="favorite-description">地下洞穴区域的探索指南，包含5个隐藏秘密和收集品位置。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-11</span>
+                        <span class="favorite-type">地图区域</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('bonebottom-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('bonebottom-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">防御型构建配置</div>
+                    <div class="favorite-description">防御徽章+治疗徽章的坦克构建，适合新手玩家使用。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-10</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('defense-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('defense-build')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Silk Song最终Boss</div>
+                    <div class="favorite-description">游戏最终Boss的终极挑战攻略，需要完美时机和位置掌握。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-09</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('silk-song-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('silk-song-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">平衡型构建配置</div>
+                    <div class="favorite-description">速度和法力平衡的通用构建，适合大多数游戏情况。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-08</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('balanced-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('balanced-build')">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Boss攻略收藏 -->
+        <div id="boss-tab" class="tab-content">
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-title">Lace Boss攻略</div>
+                    <div class="favorite-description">详细的Lace Boss战斗策略，包含第一阶段和第二阶段的所有技巧和时机。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-15</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('lace-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('lace-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Sharpshadow Boss攻略</div>
+                    <div class="favorite-description">暗影Boss的完整战斗指南，包含阴影阶段和最终阶段的策略。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-12</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('sharpshadow-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('sharpshadow-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Silk Song最终Boss</div>
+                    <div class="favorite-description">游戏最终Boss的终极挑战攻略，需要完美时机和位置掌握。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-09</span>
+                        <span class="favorite-type">Boss攻略</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('silk-song-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('silk-song-guide')">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 地图区域收藏 -->
+        <div id="map-tab" class="tab-content">
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-title">Citadel Spire探索指南</div>
+                    <div class="favorite-description">法洛姆王国主要区域的完整探索指南，包含所有隐藏区域和收集品位置。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-14</span>
+                        <span class="favorite-type">地图区域</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('citadel-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('citadel-guide')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">Bonebottom地下洞穴</div>
+                    <div class="favorite-description">地下洞穴区域的探索指南，包含5个隐藏秘密和收集品位置。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-11</span>
+                        <span class="favorite-type">地图区域</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('bonebottom-guide')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('bonebottom-guide')">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 构建配置收藏 -->
+        <div id="build-tab" class="tab-content">
+            <div class="favorites-grid">
+                <div class="favorite-item">
+                    <div class="favorite-title">高伤害构建配置</div>
+                    <div class="favorite-description">力量徽章+法力徽章的高伤害组合，适合有经验的玩家使用。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-13</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('damage-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('damage-build')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">防御型构建配置</div>
+                    <div class="favorite-description">防御徽章+治疗徽章的坦克构建，适合新手玩家使用。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-10</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('defense-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('defense-build')">移除</button>
+                    </div>
+                </div>
+                
+                <div class="favorite-item">
+                    <div class="favorite-title">平衡型构建配置</div>
+                    <div class="favorite-description">速度和法力平衡的通用构建，适合大多数游戏情况。</div>
+                    <div class="favorite-meta">
+                        <span class="favorite-date">2024-12-08</span>
+                        <span class="favorite-type">构建配置</span>
+                    </div>
+                    <div class="favorite-actions">
+                        <button class="action-btn btn-view" onclick="viewFavorite('balanced-build')">查看</button>
+                        <button class="action-btn btn-remove" onclick="removeFavorite('balanced-build')">移除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 检查用户登录状态
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            if (!isLoggedIn) {
+                alert('请先登录');
+                window.location.href = 'auth.html';
+                return false;
+            }
+            return true;
+        }
+        
+        // 切换标签页
+        function switchTab(tabName) {
+            // 更新按钮状态
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // 更新内容显示
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+        
+        // 查看收藏内容
+        function viewFavorite(favoriteId) {
+            if (!checkLoginStatus()) return;
+            
+            // 根据收藏ID跳转到相应页面
+            const favoriteMap = {
+                'lace-guide': 'siiksong-features.html#boss-guides',
+                'sharpshadow-guide': 'siiksong-features.html#boss-guides',
+                'silk-song-guide': 'siiksong-features.html#boss-guides',
+                'citadel-guide': 'siiksong-features.html#interactive-map',
+                'bonebottom-guide': 'siiksong-features.html#interactive-map',
+                'damage-build': 'siiksong-features.html#build-calculator',
+                'defense-build': 'siiksong-features.html#build-calculator',
+                'balanced-build': 'siiksong-features.html#build-calculator'
+            };
+            
+            const targetUrl = favoriteMap[favoriteId];
+            if (targetUrl) {
+                window.location.href = targetUrl;
+            } else {
+                alert('正在跳转到相关内容...');
+            }
+        }
+        
+        // 移除收藏
+        function removeFavorite(favoriteId) {
+            if (!checkLoginStatus()) return;
+            
+            if (confirm('确定要移除这个收藏吗？')) {
+                // 模拟移除收藏
+                const favoriteItem = event.target.closest('.favorite-item');
+                favoriteItem.style.opacity = '0.5';
+                favoriteItem.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    favoriteItem.remove();
+                    updateStats();
+                }, 300);
+                
+                alert('已移除收藏');
+            }
+        }
+        
+        // 更新统计数字
+        function updateStats() {
+            const totalItems = document.querySelectorAll('.favorite-item').length;
+            document.getElementById('totalFavorites').textContent = totalItems;
+            
+            const bossItems = document.querySelectorAll('#boss-tab .favorite-item').length;
+            document.getElementById('bossGuides').textContent = bossItems;
+            
+            const mapItems = document.querySelectorAll('#map-tab .favorite-item').length;
+            document.getElementById('mapAreas').textContent = mapItems;
+            
+            const buildItems = document.querySelectorAll('#build-tab .favorite-item').length;
+            document.getElementById('builds').textContent = buildItems;
+        }
+        
+        // 搜索功能
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const favoriteItems = document.querySelectorAll('.favorite-item');
+            
+            favoriteItems.forEach(item => {
+                const title = item.querySelector('.favorite-title').textContent.toLowerCase();
+                const description = item.querySelector('.favorite-description').textContent.toLowerCase();
+                
+                if (title.includes(query) || description.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+        
+        // 页面加载时检查登录状态
+        document.addEventListener('DOMContentLoaded', function() {
+            if (!checkLoginStatus()) return;
+            
+            // 初始化统计
+            updateStats();
+        });
+        
+        // Console welcome message
+        console.log(`
+        🦗 Siiksong Favorites
+        
+        Features:
+        - Favorite content management
+        - Category filtering
+        - Search functionality
+        - Statistics display
+        - Remove favorites
+        `);
+    </script>
+</body>
+</html>
