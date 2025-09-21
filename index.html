@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siiksong - Your Ultimate Hollow Knight: Silksong Companion</title>
     <meta name="description" content="Master Pharloom with expert guides, interactive maps, boss strategies, and community support for Hollow Knight: Silksong">
-    <meta name="keywords" content="Silksong, Hollow Knight, boss guide, walkthrough, Pharloom, Hornet, game guide, 空洞骑士, 丝之歌, 攻略, 指南">
+    <meta name="keywords" content="Silksong, Hollow Knight, boss guide, walkthrough, Pharloom, Hornet, game guide, metroidvania, indie game">
     <meta name="author" content="Siiksong Team">
     <meta name="robots" content="index, follow">
     <meta name="language" content="zh-CN">
@@ -1223,16 +1223,16 @@
             <!-- User Account -->
             <div class="user-account" id="userAccount">
                 <div class="user-logged-out">
-                    <a href="auth.html" class="auth-link">登录</a>
-                    <a href="auth.html" class="auth-link">注册</a>
+                    <a href="auth.html" class="auth-link">Login</a>
+                    <a href="auth.html" class="auth-link">Register</a>
                 </div>
                 <div class="user-logged-in" style="display: none;">
                     <div class="user-menu">
-                        <span class="user-name" id="userName">用户</span>
+                        <span class="user-name" id="userName">User</span>
                         <div class="user-dropdown">
-                            <a href="profile.html">个人资料</a>
-                            <a href="favorites.html">我的收藏</a>
-                            <a href="javascript:void(0)" onclick="logout()">退出登录</a>
+                            <a href="profile.html">Profile</a>
+                            <a href="favorites.html">My Favorites</a>
+                            <a href="javascript:void(0)" onclick="logout()">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -1405,11 +1405,11 @@
     <!-- Game Info Section -->
     <section class="game-info" id="game-info">
         <div class="container">
-            <h2 class="section-title">关于《空洞骑士：丝之歌》</h2>
+            <h2 class="section-title">About Hollow Knight: Silksong</h2>
             <div class="info-grid">
                 <div class="info-card">
                     <div class="info-icon">🎮</div>
-                    <h3>游戏类型</h3>
+                    <h3>Game Genre</h3>
                     <p>类银河战士恶魔城 (Metroidvania)</p>
                 </div>
                 <div class="info-card">
@@ -1529,7 +1529,7 @@
         <div class="container">
             <h2 class="section-title">玩家评价</h2>
             <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
-                基于公开演示、预览和开发者采访的社区反馈
+                基于公开演示、预览和开发者采访的Community反馈
             </p>
             <div class="reviews-grid">
                 <div class="review-card">
@@ -1685,18 +1685,18 @@
             <div class="news-date">2024年12月15日</div>
         </div>
         <div class="news-item">
-            <h4>🏆 社区速通记录更新 - 新世界纪录诞生</h4>
-            <p>玩家"SilkMaster"在《空洞骑士：丝之歌》演示版中创造了新的Any%速通世界纪录，时间为1小时23分45秒，比之前的记录快了2分钟。这展示了社区对游戏机制的深入理解。</p>
+            <h4>🏆 Community速通记录更新 - 新世界纪录诞生</h4>
+            <p>玩家"SilkMaster"在《空洞骑士：丝之歌》演示版中创造了新的Any%速通世界纪录，时间为1小时23分45秒，比之前的记录快了2分钟。这展示了Community对游戏机制的深入理解。</p>
             <div class="news-date">2024年12月12日</div>
         </div>
         <div class="news-item">
             <h4>📚 全新Boss攻略：Lace第二阶段策略详解</h4>
-            <p>我们的社区专家制作了Lace第二阶段的全新攻略，包含精确的闪避时机和反击窗口分析。这份攻略将帮助玩家更好地掌握这个挑战性Boss的战斗模式。</p>
+            <p>我们的Community专家制作了Lace第二阶段的全新攻略，包含精确的闪避时机和反击窗口分析。这份攻略将帮助玩家更好地掌握这个挑战性Boss的战斗模式。</p>
             <div class="news-date">2024年12月10日</div>
         </div>
         <div class="news-item">
             <h4>🔧 模组推荐：自定义徽章皮肤合集</h4>
-            <p>本周推荐的模组展示了我们才华横溢的模组社区创作的精美自定义徽章皮肤。这些皮肤不仅美观，还能提升游戏体验。</p>
+            <p>本周推荐的模组展示了我们才华横溢的模组Community创作的精美自定义徽章皮肤。这些皮肤不仅美观，还能提升游戏体验。</p>
             <div class="news-date">2024年12月8日</div>
         </div>
         <div class="news-item">
@@ -1715,7 +1715,7 @@
     <!-- Comments Section -->
     <section class="comments-section" id="comments">
         <div class="container">
-            <h2 class="section-title">社区讨论</h2>
+            <h2 class="section-title">Community讨论</h2>
             <p style="text-align: center; color: #fff; margin-bottom: 3rem; font-size: 1.1rem;">
                 分享您的想法，与其他玩家交流经验
             </p>
@@ -2067,7 +2067,7 @@
             // Show logout message
             const successDiv = document.createElement('div');
             successDiv.className = 'success-message';
-            successDiv.textContent = '已成功退出登录';
+            successDiv.textContent = '已成功退出Login';
             successDiv.style.position = 'fixed';
             successDiv.style.top = '100px';
             successDiv.style.right = '20px';
@@ -2096,7 +2096,7 @@
             // Check if user is logged in
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             if (!isLoggedIn) {
-                alert('请先登录后再发表评论');
+                alert('请先Login后再发表评论');
                 return;
             }
             

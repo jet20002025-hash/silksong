@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的收藏 - Siiksong</title>
-    <meta name="description" content="Siiksong用户收藏的攻略和内容">
+    <title>My Favorites - Siiksong</title>
+    <meta name="description" content="SiiksongUser收藏的攻略和内容">
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
@@ -250,9 +250,9 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-link">← 返回首页</a>
+        <a href="index.html" class="back-link">← 返回Home</a>
         
-        <h1>我的收藏</h1>
+        <h1>My Favorites</h1>
         
         <div class="stats-summary">
             <div class="stat-item">
@@ -514,11 +514,11 @@
     </div>
     
     <script>
-        // 检查用户登录状态
+        // 检查UserLogin状态
         function checkLoginStatus() {
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             if (!isLoggedIn) {
-                alert('请先登录');
+                alert('请先Login');
                 window.location.href = 'auth.html';
                 return false;
             }
@@ -615,7 +615,7 @@
             });
         });
         
-        // 页面加载时检查登录状态
+        // 页面加载时检查Login状态
         document.addEventListener('DOMContentLoaded', function() {
             if (!checkLoginStatus()) return;
             
