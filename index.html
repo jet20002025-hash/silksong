@@ -2346,7 +2346,274 @@
         });
     </script>
     
+    <!-- Music Player -->
+    <div id="musicPlayer" class="music-player">
+        <div class="music-controls">
+            <button id="playPauseBtn" class="music-btn" onclick="toggleMusic()">▶️</button>
+            <div class="music-info">
+                <span id="musicTitle">Hollow Knight: Silksong Theme</span>
+                <div class="volume-control">
+                    <span>🔊</span>
+                    <input type="range" id="volumeSlider" min="0" max="100" value="30" onchange="setVolume(this.value)">
+                </div>
+            </div>
+            <button id="muteBtn" class="music-btn" onclick="toggleMute()">🔊</button>
+        </div>
+        <audio id="backgroundMusic" loop>
+            <!-- 使用HTML5音频API生成背景音乐 -->
+        </audio>
+    </div>
+
     <!-- Language Support Script -->
     <script src="js/language.js"></script>
+    
+    <!-- Music Player Script -->
+    <script>
+        // 背景音乐播放器
+        let musicPlayer = document.getElementById('backgroundMusic');
+        let playPauseBtn = document.getElementById('playPauseBtn');
+        let muteBtn = document.getElementById('muteBtn');
+        let volumeSlider = document.getElementById('volumeSlider');
+        let musicTitle = document.getElementById('musicTitle');
+        let isPlaying = false;
+        let isMuted = false;
+        
+        // 创建简单的背景音乐（使用Web Audio API生成）
+        function createBackgroundMusic() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const sampleRate = audioContext.sampleRate;
+            const duration = 60; // 60秒循环
+            const buffer = audioContext.createBuffer(2, sampleRate * duration, sampleRate);
+            
+            // 创建简单的旋律
+            const frequencies = [523.25, 587.33, 659.25, 698.46, 783.99, 880.00]; // C5, D5, E5, F5, G5, A5
+            const notesPerSecond = 2;
+            const noteDuration = sampleRate / notesPerSecond;
+            
+            for (let channel = 0; channel < 2; channel++) {
+                const channelData = buffer.getChannelData(channel);
+                for (let i = 0; i < channelData.length; i++) {
+                    const noteIndex = Math.floor(i / noteDuration) % frequencies.length;
+                    const frequency = frequencies[noteIndex];
+                    const time = i / sampleRate;
+                    
+                    // 创建简单的正弦波音调
+                    let sample = Math.sin(2 * Math.PI * frequency * time) * 0.1;
+                    
+                    // 添加简单的包络（淡入淡出）
+                    const noteProgress = (i % noteDuration) / noteDuration;
+                    const envelope = Math.sin(noteProgress * Math.PI) * 0.5;
+                    sample *= envelope;
+                    
+                    // 添加一些和声
+                    sample += Math.sin(2 * Math.PI * frequency * 1.5 * time) * 0.05;
+                    sample += Math.sin(2 * Math.PI * frequency * 0.5 * time) * 0.03;
+                    
+                    channelData[i] = sample;
+                }
+            }
+            
+            return buffer;
+        }
+        
+        // 初始化音乐播放器
+        function initMusicPlayer() {
+            try {
+                // 创建音频上下文
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // 生成背景音乐
+                const musicBuffer = createBackgroundMusic();
+                
+                // 创建音频源
+                let source = null;
+                let isPlaying = false;
+                
+                function playMusic() {
+                    if (!isPlaying) {
+                        source = audioContext.createBufferSource();
+                        source.buffer = musicBuffer;
+                        source.loop = true;
+                        
+                        // 创建音量控制
+                        const gainNode = audioContext.createGain();
+                        gainNode.gain.value = volumeSlider.value / 100;
+                        
+                        source.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        source.start();
+                        isPlaying = true;
+                        playPauseBtn.textContent = '⏸️';
+                        
+                        // 更新音量控制
+                        volumeSlider.oninput = function() {
+                            if (!isMuted) {
+                                gainNode.gain.value = this.value / 100;
+                            }
+                        };
+                    }
+                }
+                
+                function pauseMusic() {
+                    if (source && isPlaying) {
+                        source.stop();
+                        source = null;
+                        isPlaying = false;
+                        playPauseBtn.textContent = '▶️';
+                    }
+                }
+                
+                // 全局函数
+                window.toggleMusic = function() {
+                    if (isPlaying) {
+                        pauseMusic();
+                    } else {
+                        playMusic();
+                    }
+                };
+                
+                window.setVolume = function(value) {
+                    if (!isMuted) {
+                        volumeSlider.value = value;
+                    }
+                };
+                
+                window.toggleMute = function() {
+                    isMuted = !isMuted;
+                    if (isMuted) {
+                        muteBtn.textContent = '🔇';
+                        volumeSlider.value = 0;
+                    } else {
+                        muteBtn.textContent = '🔊';
+                        volumeSlider.value = 30;
+                    }
+                };
+                
+                // 默认静音状态，用户点击后开始播放
+                musicPlayer.style.display = 'block';
+                
+            } catch (error) {
+                console.log('Audio not supported:', error);
+                document.getElementById('musicPlayer').style.display = 'none';
+            }
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 延迟初始化，等待用户交互
+            setTimeout(initMusicPlayer, 1000);
+        });
+        
+        // 用户首次交互时启用音频
+        document.addEventListener('click', function() {
+            if (!isPlaying) {
+                initMusicPlayer();
+            }
+        }, { once: true });
+    </script>
+    
+    <style>
+        /* 音乐播放器样式 */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+            z-index: 1000;
+            min-width: 280px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .music-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .music-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .music-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        #musicTitle {
+            font-size: 12px;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .volume-control span {
+            font-size: 12px;
+        }
+        
+        #volumeSlider {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+            cursor: pointer;
+        }
+        
+        #volumeSlider::-webkit-slider-thumb {
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        #volumeSlider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .music-player {
+                bottom: 10px;
+                right: 10px;
+                left: 10px;
+                min-width: auto;
+            }
+        }
+    </style>
 </body>
 </html>
