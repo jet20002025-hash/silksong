@@ -488,14 +488,22 @@
         <nav class="nav container">
             <a href="index.html" class="logo">🦗 Siiksong</a>
             <ul class="nav-links">
-                <li><a href="#guides">Guides</a></li>
-                <li><a href="#map">Map</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="#news">News</a></li>
+                <li><a href="#guides" data-translate="guides">Guides</a></li>
+                <li><a href="#map" data-translate="map">Map</a></li>
+                <li><a href="#community" data-translate="community">Community</a></li>
+                <li><a href="#news" data-translate="news">News</a></li>
             </ul>
             <div class="search-box">
-                <input type="text" placeholder="Search guides, bosses, tips..." id="searchInput">
+                <input type="text" placeholder="Search guides, bosses, tips..." id="searchInput" data-translate="searchPlaceholder">
                 <span style="color: #fff; margin-left: 0.5rem;">🔍</span>
+            </div>
+            
+            <!-- Language Selector -->
+            <div class="language-selector">
+                <select id="languageSelector" onchange="changeLanguage(this.value)">
+                    <option value="en" selected>English</option>
+                    <option value="es">Español</option>
+                </select>
             </div>
         </nav>
     </header>
@@ -901,5 +909,8 @@
         Built with vanilla HTML, CSS, and JavaScript for maximum compatibility.
         `);
     </script>
+    
+    <!-- Language Support -->
+    <script src="js/language.js"></script>
 </body>
 </html>
