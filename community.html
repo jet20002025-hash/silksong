@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Siiksong</title>
+    <meta name="description" content="Join the Hollow Knight: Silksong community - forums, discussions, user profiles, achievements and rankings">
+    <meta name="keywords" content="Silksong, Hollow Knight, community, forums, discussions, user profiles, achievements">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Community - Siiksong">
+    <meta property="og:description" content="Join the Hollow Knight: Silksong community - forums, discussions, user profiles, achievements and rankings">
+    <meta property="og:image" content="https://siiksong.store/images/community-og.jpg">
+    <meta property="og:url" content="https://siiksong.store/community.html">
+    <meta property="og:type" content="website">
+    
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #4ecdc4;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+        }
+        
+        .language-selector select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .language-selector select option {
+            background: #333;
+            color: #fff;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Community Sections */
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .community-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .community-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #4ecdc4;
+        }
+        
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: #fff;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #4ecdc4;
+            border: 2px solid #4ecdc4;
+        }
+        
+        .btn-secondary:hover {
+            background: #4ecdc4;
+            color: #fff;
+        }
+        
+        /* Forums Section */
+        .forums-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #4ecdc4;
+            text-align: center;
+        }
+        
+        .forum-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .forum-category {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4ecdc4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .category-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .category-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* User Profiles Section */
+        .profiles-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .profile-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .profile-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #4ecdc4;
+        }
+        
+        .profile-title {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        /* Achievements Section */
+        .achievements-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .achievement-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .achievement-name {
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .achievement-description {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .forum-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="logo">🦗 Siiksong</a>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news-center.html">News Center</a></li>
+                    <li><a href="guides.html">Guides</a></li>
+                    <li><a href="community.html" class="active">Community</a></li>
+                    <li><a href="lore.html">Lore</a></li>
+                    <li><a href="creations.html">Creations</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <select id="languageSelector" onchange="changeLanguage(this.value)">
+                        <option value="en" selected>English</option>
+                        <option value="es">Español</option>
+                    </select>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Community Hub</h1>
+                <p class="page-subtitle">Connect with fellow Silksong players, share strategies, discuss lore, and build lasting friendships in our vibrant community</p>
+            </div>
+
+            <!-- Community Features -->
+            <div class="community-grid">
+                <div class="community-card">
+                    <span class="card-icon">💬</span>
+                    <h3 class="card-title">Forums & Discussions</h3>
+                    <p class="card-description">Join active discussions about gameplay, strategies, lore theories, and share your experiences with the community.</p>
+                    <div class="card-stats">
+                        <span>2,847 Posts</span>
+                        <span>156 Topics</span>
+                    </div>
+                    <a href="#forums" class="btn btn-primary">Join Discussion</a>
+                </div>
+
+                <div class="community-card">
+                    <span class="card-icon">👤</span>
+                    <h3 class="card-title">User Profiles</h3>
+                    <p class="card-description">Create your profile, showcase your achievements, share your favorite builds, and connect with other players.</p>
+                    <div class="card-stats">
+                        <span>1,234 Members</span>
+                        <span>89 Active</span>
+                    </div>
+                    <a href="profile.html" class="btn btn-primary">View Profiles</a>
+                </div>
+
+                <div class="community-card">
+                    <span class="card-icon">🏆</span>
+                    <h3 class="card-title">Achievements & Rankings</h3>
+                    <p class="card-description">Compete with other players, earn badges for your contributions, and climb the community leaderboards.</p>
+                    <div class="card-stats">
+                        <span>45 Badges</span>
+                        <span>Top 100</span>
+                    </div>
+                    <a href="#achievements" class="btn btn-primary">View Rankings</a>
+                </div>
+
+                <div class="community-card">
+                    <span class="card-icon">🎮</span>
+                    <h3 class="card-title">Game Events</h3>
+                    <p class="card-description">Participate in community events, speedrun competitions, art contests, and special challenges.</p>
+                    <div class="card-stats">
+                        <span>12 Events</span>
+                        <span>3 Active</span>
+                    </div>
+                    <a href="#events" class="btn btn-primary">Join Events</a>
+                </div>
+            </div>
+
+            <!-- Forums Section -->
+            <section class="forums-section" id="forums">
+                <h2 class="section-title">Discussion Forums</h2>
+                <div class="forum-categories">
+                    <div class="forum-category">
+                        <h3 class="category-title">New Player Help</h3>
+                        <p class="category-description">Get help with basic gameplay, controls, and beginner tips</p>
+                        <div class="category-stats">
+                            <span>342 Posts</span>
+                            <span>23 Topics</span>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <h3 class="category-title">General Discussion</h3>
+                        <p class="category-description">General chat about Silksong, updates, and community news</p>
+                        <div class="category-stats">
+                            <span>1,156 Posts</span>
+                            <span>89 Topics</span>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <h3 class="category-title">Technical Discussion</h3>
+                        <p class="category-description">Discuss technical aspects, bugs, performance, and mods</p>
+                        <div class="category-stats">
+                            <span>234 Posts</span>
+                            <span>18 Topics</span>
+                        </div>
+                    </div>
+                    <div class="forum-category">
+                        <h3 class="category-title">Lore & Theories</h3>
+                        <p class="category-description">Deep dive into the story, characters, and world of Silksong</p>
+                        <div class="category-stats">
+                            <span>567 Posts</span>
+                            <span>45 Topics</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Profiles Section -->
+            <section class="profiles-section">
+                <h2 class="section-title">Featured Community Members</h2>
+                <div class="profile-grid">
+                    <div class="profile-card">
+                        <div class="profile-avatar">S</div>
+                        <h4 class="profile-name">SilkMaster</h4>
+                        <p class="profile-title">Speedrun Champion</p>
+                        <div class="profile-stats">
+                            <span>Posts: 234</span>
+                            <span>Level: 25</span>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">L</div>
+                        <h4 class="profile-name">LoreExpert</h4>
+                        <p class="profile-title">Lore Theorist</p>
+                        <div class="profile-stats">
+                            <span>Posts: 189</span>
+                            <span>Level: 22</span>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">G</div>
+                        <h4 class="profile-name">GuideGuru</h4>
+                        <p class="profile-title">Guide Creator</p>
+                        <div class="profile-stats">
+                            <span>Posts: 156</span>
+                            <span>Level: 20</span>
+                        </div>
+                    </div>
+                    <div class="profile-card">
+                        <div class="profile-avatar">A</div>
+                        <h4 class="profile-name">ArtMaster</h4>
+                        <p class="profile-title">Fan Artist</p>
+                        <div class="profile-stats">
+                            <span>Posts: 98</span>
+                            <span>Level: 18</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Achievements Section -->
+            <section class="achievements-section" id="achievements">
+                <h2 class="section-title">Community Achievements</h2>
+                <div class="achievement-grid">
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🎯</span>
+                        <h4 class="achievement-name">First Post</h4>
+                        <p class="achievement-description">Make your first forum post</p>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">💬</span>
+                        <h4 class="achievement-name">Active Member</h4>
+                        <p class="achievement-description">Post 50 times in forums</p>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🏆</span>
+                        <h4 class="achievement-name">Helpful Member</h4>
+                        <p class="achievement-description">Help 10 new players</p>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">🎨</span>
+                        <h4 class="achievement-name">Creative Contributor</h4>
+                        <p class="achievement-description">Share 5 fan creations</p>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">📚</span>
+                        <h4 class="achievement-name">Lore Master</h4>
+                        <p class="achievement-description">Contribute to lore discussions</p>
+                    </div>
+                    <div class="achievement-item">
+                        <span class="achievement-icon">⚡</span>
+                        <h4 class="achievement-name">Speed Demon</h4>
+                        <p class="achievement-description">Participate in speedrun events</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- AdSense Ad -->
+    <div style="text-align: center; margin: 2rem 0;">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-7208260866318884"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: rgba(0, 0, 0, 0.8); padding: 2rem 0; text-align: center; margin-top: 3rem;">
+        <div class="container">
+            <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">
+                &copy; 2024 Siiksong Community. All rights reserved.
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <a href="about.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">About</a>
+                <a href="auth.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Contact</a>
+                <a href="privacy-policy.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Privacy</a>
+                <a href="terms-of-service.html" style="color: rgba(255, 255, 255, 0.7); text-decoration: none;">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/language.js"></script>
+    <script>
+        // Community functionality
+        function joinDiscussion() {
+            alert('Forum functionality coming soon!');
+        }
+        
+        function viewRankings() {
+            alert('Rankings system coming soon!');
+        }
+        
+        function joinEvents() {
+            alert('Event system coming soon!');
+        }
+        
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Community page loaded');
+        });
+    </script>
+</body>
+</html>
