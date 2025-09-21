@@ -1805,7 +1805,7 @@
             
             <!-- Load More Comments -->
             <div class="load-more-container">
-                <button class="load-more-btn" onclick="loadMoreComments()">加载更多评论</button>
+                <button class="load-more-btn" onclick="loadMoreComments()">Load More Comments</button>
             </div>
         </div>
     </section>
@@ -2067,7 +2067,7 @@
             // Show logout message
             const successDiv = document.createElement('div');
             successDiv.className = 'success-message';
-            successDiv.textContent = '已成功退出Login';
+            successDiv.textContent = 'Successfully logged out';
             successDiv.style.position = 'fixed';
             successDiv.style.top = '100px';
             successDiv.style.right = '20px';
@@ -2089,14 +2089,14 @@
             const commentText = commentInput.value.trim();
             
             if (!commentText) {
-                alert('请输入评论内容');
+                alert('Please enter comment content');
                 return;
             }
             
             // Check if user is logged in
             const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
             if (!isLoggedIn) {
-                alert('请先Login后再发表评论');
+                alert('Please login first before posting comments');
                 return;
             }
             
@@ -2109,7 +2109,7 @@
             commentInput.value = '';
             
             // Show success message
-            showCommentSuccess('评论发布成功！');
+            showCommentSuccess('Comment posted successfully!');
         }
         
         function createCommentElement(text) {
@@ -2125,15 +2125,15 @@
                     <div class="user-avatar">${userAvatar}</div>
                     <div class="user-details">
                         <span class="user-name">${userName}</span>
-                        <span class="comment-time">刚刚</span>
+                        <span class="comment-time">Just now</span>
                     </div>
                 </div>
                 <div class="comment-content">
                     <p>${text}</p>
                     <div class="comment-actions">
                         <button class="action-btn" onclick="likeComment(this)">👍 0</button>
-                        <button class="action-btn" onclick="replyComment(this)">💬 回复</button>
-                        <button class="action-btn" onclick="shareComment(this)">📤 分享</button>
+                        <button class="action-btn" onclick="replyComment(this)">💬 Reply</button>
+                        <button class="action-btn" onclick="shareComment(this)">📤 Share</button>
                     </div>
                 </div>
             `;
@@ -2156,9 +2156,9 @@
             const commentItem = button.closest('.comment-item');
             const userName = commentItem.querySelector('.user-name').textContent;
             
-            const replyText = prompt(`回复 ${userName}:`);
+            const replyText = prompt(`Reply to ${userName}:`);
             if (replyText) {
-                showCommentSuccess(`回复 ${userName}: ${replyText}`);
+                showCommentSuccess(`Reply to ${userName}: ${replyText}`);
             }
         }
         
@@ -2168,14 +2168,14 @@
             
             if (navigator.share) {
                 navigator.share({
-                    title: 'Siiksong 评论',
+                    title: 'Siiksong Comment',
                     text: commentText,
                     url: window.location.href
                 });
             } else {
                 // Fallback: copy to clipboard
                 navigator.clipboard.writeText(commentText).then(() => {
-                    showCommentSuccess('评论已复制到剪贴板');
+                    showCommentSuccess('Comment copied to clipboard');
                 });
             }
         }
@@ -2193,16 +2193,16 @@
         
         function loadMoreComments() {
             const loadMoreBtn = document.querySelector('.load-more-btn');
-            loadMoreBtn.textContent = '加载中...';
+            loadMoreBtn.textContent = 'Loading...';
             loadMoreBtn.disabled = true;
             
             setTimeout(() => {
                 // Simulate loading more comments
                 const commentsList = document.getElementById('commentsList');
-                const newComment = createCommentElement('这是加载的更多评论内容...');
+                const newComment = createCommentElement('This is more comment content being loaded...');
                 commentsList.appendChild(newComment);
                 
-                loadMoreBtn.textContent = '加载更多评论';
+                loadMoreBtn.textContent = 'Load More Comments';
                 loadMoreBtn.disabled = false;
             }, 1500);
         }
@@ -2237,7 +2237,7 @@
                 document.getElementById('commentUserName').textContent = userEmail.split('@')[0];
             } else {
                 document.getElementById('commentUserAvatar').textContent = '👤';
-                document.getElementById('commentUserName').textContent = '游客';
+                document.getElementById('commentUserName').textContent = 'Guest';
             }
         }
         
@@ -2255,7 +2255,7 @@
                     'xbox': 'Xbox Game Pass',
                     'playstation': 'PlayStation'
                 };
-                alert(`正在将《空洞骑士：丝之歌》添加到${platformNames[platform]}愿望单...\n\n在真实实现中，这将重定向到相应的商店页面。`);
+                alert(`Adding Hollow Knight: Silksong to ${platformNames[platform]} wishlist...\n\nIn a real implementation, this would redirect to the corresponding store page.`);
             }, 1000);
         }
         
@@ -2269,7 +2269,7 @@
                     'celeste': 'Celeste',
                     'hollowknight': 'Hollow Knight'
                 };
-                alert(`正在查看${gameNames[gameName]}的详细信息...\n\n在真实实现中，这将重定向到游戏商店页面或详细信息页面。`);
+                alert(`Viewing details for ${gameNames[gameName]}...\n\nIn a real implementation, this would redirect to the game store page or details page.`);
             }, 800);
         }
         
@@ -2360,7 +2360,7 @@
             <button id="muteBtn" class="music-btn" onclick="toggleMute()">🔊</button>
         </div>
         <audio id="backgroundMusic" loop>
-            <!-- 使用HTML5音频API生成背景音乐 -->
+            <!-- Background music generated using HTML5 Audio API -->
         </audio>
     </div>
 
@@ -2369,7 +2369,7 @@
     
     <!-- Music Player Script -->
     <script>
-        // 背景音乐播放器
+        // Background music player
         let musicPlayer = document.getElementById('backgroundMusic');
         let playPauseBtn = document.getElementById('playPauseBtn');
         let muteBtn = document.getElementById('muteBtn');
@@ -2378,14 +2378,14 @@
         let isPlaying = false;
         let isMuted = false;
         
-        // 创建简单的背景音乐（使用Web Audio API生成）
+        // Create simple background music (generated using Web Audio API)
         function createBackgroundMusic() {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
             const sampleRate = audioContext.sampleRate;
-            const duration = 60; // 60秒循环
+            const duration = 60; // 60-second loop
             const buffer = audioContext.createBuffer(2, sampleRate * duration, sampleRate);
             
-            // 创建简单的旋律
+            // Create simple melody
             const frequencies = [523.25, 587.33, 659.25, 698.46, 783.99, 880.00]; // C5, D5, E5, F5, G5, A5
             const notesPerSecond = 2;
             const noteDuration = sampleRate / notesPerSecond;
@@ -2397,15 +2397,15 @@
                     const frequency = frequencies[noteIndex];
                     const time = i / sampleRate;
                     
-                    // 创建简单的正弦波音调
+                    // Create simple sine wave tone
                     let sample = Math.sin(2 * Math.PI * frequency * time) * 0.1;
                     
-                    // 添加简单的包络（淡入淡出）
+                    // Add simple envelope (fade in/out)
                     const noteProgress = (i % noteDuration) / noteDuration;
                     const envelope = Math.sin(noteProgress * Math.PI) * 0.5;
                     sample *= envelope;
                     
-                    // 添加一些和声
+                    // Add some harmony
                     sample += Math.sin(2 * Math.PI * frequency * 1.5 * time) * 0.05;
                     sample += Math.sin(2 * Math.PI * frequency * 0.5 * time) * 0.03;
                     
@@ -2416,16 +2416,16 @@
             return buffer;
         }
         
-        // 初始化音乐播放器
+        // Initialize music player
         function initMusicPlayer() {
             try {
-                // 创建音频上下文
+                // Create audio context
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 
-                // 生成背景音乐
+                // Generate background music
                 const musicBuffer = createBackgroundMusic();
                 
-                // 创建音频源
+                // Create audio source
                 let source = null;
                 let isPlaying = false;
                 
@@ -2435,7 +2435,7 @@
                         source.buffer = musicBuffer;
                         source.loop = true;
                         
-                        // 创建音量控制
+                        // Create volume control
                         const gainNode = audioContext.createGain();
                         gainNode.gain.value = volumeSlider.value / 100;
                         
@@ -2446,7 +2446,7 @@
                         isPlaying = true;
                         playPauseBtn.textContent = '⏸️';
                         
-                        // 更新音量控制
+                        // Update volume control
                         volumeSlider.oninput = function() {
                             if (!isMuted) {
                                 gainNode.gain.value = this.value / 100;
@@ -2464,7 +2464,7 @@
                     }
                 }
                 
-                // 全局函数
+                // Global functions
                 window.toggleMusic = function() {
                     if (isPlaying) {
                         pauseMusic();
@@ -2490,7 +2490,7 @@
                     }
                 };
                 
-                // 默认静音状态，用户点击后开始播放
+                // Default muted state, start playing after user clicks
                 musicPlayer.style.display = 'block';
                 
             } catch (error) {
@@ -2499,13 +2499,13 @@
             }
         }
         
-        // 页面加载完成后初始化
+        // Initialize after page load
         document.addEventListener('DOMContentLoaded', function() {
-            // 延迟初始化，等待用户交互
+            // Delayed initialization, wait for user interaction
             setTimeout(initMusicPlayer, 1000);
         });
         
-        // 用户首次交互时启用音频
+        // Enable audio on first user interaction
         document.addEventListener('click', function() {
             if (!isPlaying) {
                 initMusicPlayer();
@@ -2514,7 +2514,7 @@
     </script>
     
     <style>
-        /* 音乐播放器样式 */
+        /* Music player styles */
         .music-player {
             position: fixed;
             bottom: 20px;
@@ -2605,7 +2605,7 @@
             border: none;
         }
         
-        /* 响应式设计 */
+        /* Responsive design */
         @media (max-width: 768px) {
             .music-player {
                 bottom: 10px;
