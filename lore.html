@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>剧情与背景分析 - Siiksong</title>
+    <meta name="description" content="深入探索《空洞骑士：丝之歌》的剧情、世界观和角色关系，与社区一起分析法洛姆王国的奥秘">
+    <meta name="keywords" content="Silksong, 丝之歌, 剧情, 世界观, 角色分析, 背景故事, 理论">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff6b6b;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Lore Sections */
+        .lore-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .lore-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .lore-section:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        
+        .section-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .lore-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .lore-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .lore-link {
+            color: #4ecdc4;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(78, 205, 196, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .lore-link:hover {
+            color: #ff6b6b;
+            border-bottom-color: #ff6b6b;
+            padding-left: 0.5rem;
+        }
+        
+        /* Featured Theory */
+        .featured-theory {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .theory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .theory-title {
+            font-size: 2rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .theory-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .theory-author {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .theory-date {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .theory-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .theory-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tag {
+            background: #4ecdc4;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .theory-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Character Analysis */
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .character-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .character-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .character-avatar {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .character-name {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .character-role {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .character-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .character-link {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        
+        .character-link:hover {
+            color: #ff6b6b;
+        }
+        
+        /* World Map */
+        .world-map-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .world-map-placeholder {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .world-map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        /* Community Theories */
+        .theories-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .theory-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid #4ecdc4;
+        }
+        
+        .theory-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .theory-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .theory-item-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .theory-item-title:hover {
+            color: #4ecdc4;
+        }
+        
+        .theory-item-meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .theory-item-summary {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .lore-sections {
+                grid-template-columns: 1fr;
+            }
+            
+            .character-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .theory-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .theory-actions {
+                width: 100%;
+            }
+            
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-center.html">资讯中心</a></li>
+                <li><a href="guides.html">攻略指南</a></li>
+                <li><a href="community.html">社区</a></li>
+                <li><a href="lore.html" class="active">剧情分析</a></li>
+                <li><a href="creations.html">同人创作</a></li>
+                <li><a href="shop.html">周边商城</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">剧情与背景分析</h1>
+                <p class="page-subtitle">深入探索《空洞骑士：丝之歌》的剧情、世界观和角色关系，与社区一起分析法洛姆王国的奥秘</p>
+            </div>
+
+            <!-- Featured Theory -->
+            <section class="featured-theory">
+                <div class="theory-header">
+                    <h2 class="theory-title">Hornet与空洞骑士的联系：姐妹还是宿敌？</h2>
+                    <div class="theory-meta">
+                        <span class="theory-author">作者：LoreMaster</span>
+                        <span class="theory-date">2024年12月15日</span>
+                    </div>
+                </div>
+                <div class="theory-tags">
+                    <span class="tag">角色关系</span>
+                    <span class="tag">剧情分析</span>
+                    <span class="tag">热门理论</span>
+                </div>
+                <div class="theory-content">
+                    <p>在《空洞骑士》中，Hornet作为"守护者"出现，而在《丝之歌》中，她成为了主角。
+                    这种身份转变背后隐藏着怎样的故事？她与空洞骑士之间是姐妹关系，还是有着更深层的联系？
+                    本文将深入分析Hornet的身世之谜，探讨她在整个故事中的关键作用...</p>
+                </div>
+                <div class="theory-actions">
+                    <a href="#" class="btn btn-primary">📖 阅读完整分析</a>
+                    <a href="#" class="btn btn-secondary">💬 参与讨论</a>
+                </div>
+            </section>
+
+            <!-- Lore Sections -->
+            <div class="lore-sections">
+                <!-- 世界观分析 -->
+                <div class="lore-section">
+                    <div class="section-header">
+                        <span class="section-icon">🌍</span>
+                        <h3 class="section-title">世界观分析</h3>
+                    </div>
+                    <div class="lore-content">
+                        <p>探索法洛姆王国的历史、文化和政治结构，了解这个世界如何与空洞骑士的世界相连。</p>
+                    </div>
+                    <div class="lore-links">
+                        <a href="#" class="lore-link">法洛姆王国历史时间线</a>
+                        <a href="#" class="lore-link">王国政治结构与统治者</a>
+                        <a href="#" class="lore-link">与空洞骑士世界的联系</a>
+                        <a href="#" class="lore-link">地理环境与文化特色</a>
+                        <a href="#" class="lore-link">宗教信仰与神话传说</a>
+                    </div>
+                </div>
+
+                <!-- 角色分析 -->
+                <div class="lore-section">
+                    <div class="section-header">
+                        <span class="section-icon">👥</span>
+                        <h3 class="section-title">角色分析</h3>
+                    </div>
+                    <div class="lore-content">
+                        <p>深入分析游戏中的主要角色，了解他们的背景、动机和在整个故事中的作用。</p>
+                    </div>
+                    <div class="lore-links">
+                        <a href="#" class="lore-link">Hornet身世之谜</a>
+                        <a href="#" class="lore-link">Lace的真实身份</a>
+                        <a href="#" class="lore-link">Shakra的过去</a>
+                        <a href="#" class="lore-link">NPC角色关系图</a>
+                        <a href="#" class="lore-link">反派角色动机分析</a>
+                    </div>
+                </div>
+
+                <!-- 剧情解析 -->
+                <div class="lore-section">
+                    <div class="section-header">
+                        <span class="section-icon">📚</span>
+                        <h3 class="section-title">剧情解析</h3>
+                    </div>
+                    <div class="lore-content">
+                        <p>分析游戏的主线剧情、支线任务和各种结局，理解故事的深层含义。</p>
+                    </div>
+                    <div class="lore-links">
+                        <a href="#" class="lore-link">主线剧情完整解析</a>
+                        <a href="#" class="lore-link">支线任务剧情分析</a>
+                        <a href="#" class="lore-link">多结局剧情分支</a>
+                        <a href="#" class="lore-link">隐藏剧情触发条件</a>
+                        <a href="#" class="lore-link">剧情与游戏机制的结合</a>
+                    </div>
+                </div>
+
+                <!-- 社区理论 -->
+                <div class="lore-section">
+                    <div class="section-header">
+                        <span class="section-icon">💭</span>
+                        <h3 class="section-title">社区理论</h3>
+                    </div>
+                    <div class="lore-content">
+                        <p>社区玩家提出的各种理论假设，共同探讨游戏中的未解之谜。</p>
+                    </div>
+                    <div class="lore-links">
+                        <a href="#" class="lore-link">热门理论汇总</a>
+                        <a href="#" class="lore-link">新理论投稿</a>
+                        <a href="#" class="lore-link">理论验证与反驳</a>
+                        <a href="#" class="lore-link">开发者暗示分析</a>
+                        <a href="#" class="lore-link">理论讨论投票</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Character Analysis -->
+            <section class="character-grid">
+                <div class="character-card">
+                    <span class="character-avatar">🦗</span>
+                    <h3 class="character-name">Hornet</h3>
+                    <p class="character-role">主角 / 守护者</p>
+                    <p class="character-desc">致命的猎人，空洞骑士的守护者，现在在法洛姆王国展开新的冒险。</p>
+                    <a href="#" class="character-link">详细分析 →</a>
+                </div>
+                
+                <div class="character-card">
+                    <span class="character-avatar">⚔️</span>
+                    <h3 class="character-name">Lace</h3>
+                    <p class="character-role">主要Boss</p>
+                    <p class="character-desc">神秘的战士，拥有独特的战斗风格，可能与Hornet有着复杂的关系。</p>
+                    <a href="#" class="character-link">详细分析 →</a>
+                </div>
+                
+                <div class="character-card">
+                    <span class="character-avatar">👑</span>
+                    <h3 class="character-name">Shakra</h3>
+                    <p class="character-role">重要NPC</p>
+                    <p class="character-desc">法洛姆王国的关键人物，可能掌握着重要的信息和秘密。</p>
+                    <a href="#" class="character-link">详细分析 →</a>
+                </div>
+            </section>
+
+            <!-- World Map -->
+            <section class="world-map-section">
+                <h2 style="color: #fff; margin-bottom: 1rem; font-size: 2rem;">法洛姆王国地图</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                    探索法洛姆王国的各个区域，了解每个地方的背景故事和重要事件
+                </p>
+                <div class="world-map-placeholder">
+                    <div>
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                        <div>法洛姆王国全景地图</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">点击区域查看详细背景故事</div>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary">🗺️ 打开完整地图</a>
+            </section>
+
+            <!-- Community Theories -->
+            <section class="theories-list">
+                <h2 style="color: #fff; margin-bottom: 2rem; font-size: 2rem; text-align: center;">热门社区理论</h2>
+                
+                <div class="theory-item">
+                    <div class="theory-item-header">
+                        <a href="#" class="theory-item-title">丝之歌是空洞骑士的前传还是后传？</a>
+                        <span class="theory-item-meta">作者：TimeTraveler • 2天前</span>
+                    </div>
+                    <p class="theory-item-summary">通过分析游戏中的线索和暗示，探讨丝之歌在整个时间线中的位置...</p>
+                </div>
+                
+                <div class="theory-item">
+                    <div class="theory-item-header">
+                        <a href="#" class="theory-item-title">Hornet的丝绸能力来源分析</a>
+                        <span class="theory-item-meta">作者：PowerAnalyzer • 3天前</span>
+                    </div>
+                    <p class="theory-item-summary">深入分析Hornet独特的丝绸能力，探讨其与空洞骑士世界中其他能力的关系...</p>
+                </div>
+                
+                <div class="theory-item">
+                    <div class="theory-item-header">
+                        <a href="#" class="theory-item-title">法洛姆王国与空洞骑士王国的联系</a>
+                        <span class="theory-item-meta">作者：WorldConnector • 5天前</span>
+                    </div>
+                    <p class="theory-item-summary">分析两个王国之间的历史联系，探讨它们是否属于同一个世界观...</p>
+                </div>
+                
+                <div class="theory-item">
+                    <div class="theory-item-header">
+                        <a href="#" class="theory-item-title">Lace的真实身份推测</a>
+                        <span class="theory-item-meta">作者：MysteryHunter • 1周前</span>
+                    </div>
+                    <p class="theory-item-summary">基于游戏预告片和官方信息，推测Lace的真实身份和背景...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Lore section interaction
+        document.querySelectorAll('.lore-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const title = this.textContent;
+                console.log(`打开剧情分析: ${title}`);
+                // 在实际实现中，这里会跳转到具体的剧情分析页面
+            });
+        });
+
+        // Character card interaction
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const name = this.querySelector('.character-name').textContent;
+                console.log(`查看角色分析: ${name}`);
+                // 在实际实现中，这里会跳转到角色详细分析页面
+            });
+        });
+
+        // World map interaction
+        document.querySelector('.world-map-placeholder').addEventListener('click', function() {
+            console.log('打开法洛姆王国地图');
+            // 在实际实现中，这里会打开交互式地图
+        });
+
+        // Theory interaction
+        document.querySelectorAll('.theory-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.theory-item-title').textContent;
+                console.log(`阅读理论: ${title}`);
+                // 在实际实现中，这里会跳转到理论详细页面
+            });
+        });
+
+        // Console welcome message
+        console.log(`
+        📚 Siiksong 剧情与背景分析中心
+        
+        这里是《空洞骑士：丝之歌》的剧情分析中心，
+        深入探索游戏的世界观、角色关系和故事情节。
+        
+        包含内容：
+        - 世界观深度分析
+        - 角色背景解析
+        - 剧情完整解读
+        - 社区理论讨论
+        - 角色关系图
+        - 法洛姆王国地图
+        
+        与社区一起揭开法洛姆王国的所有秘密！
+        `);
+    </script>
+</body>
+</html>

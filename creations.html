@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同人创作区 - Siiksong</title>
+    <meta name="description" content="展示《空洞骑士：丝之歌》粉丝的原创作品，包括同人画作、Cosplay、同人小说和原创音乐">
+    <meta name="keywords" content="Silksong, 丝之歌, 同人创作, 画作, Cosplay, 同人小说, 原创音乐, 粉丝作品">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff6b6b;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Creation Categories */
+        .creation-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .category-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .category-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-count {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Featured Creation */
+        .featured-creation {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 2rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .featured-author {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .featured-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 15px;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .featured-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .featured-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .featured-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .gallery-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .gallery-content {
+            padding: 1.5rem;
+        }
+        
+        .gallery-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-author {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+        }
+        
+        .gallery-stats {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        /* Submit Creation */
+        .submit-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .submit-title {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .submit-desc {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .submit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .form-label {
+            color: #fff;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        .form-input, .form-textarea, .form-select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 0.8rem;
+            color: #fff;
+            font-size: 1rem;
+        }
+        
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        /* Contest Section */
+        .contest-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #4ecdc4;
+        }
+        
+        .contest-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contest-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        
+        .contest-title {
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .contest-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contest-deadline {
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .creation-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .featured-actions {
+                width: 100%;
+            }
+            
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-center.html">资讯中心</a></li>
+                <li><a href="guides.html">攻略指南</a></li>
+                <li><a href="community.html">社区</a></li>
+                <li><a href="lore.html">剧情分析</a></li>
+                <li><a href="creations.html" class="active">同人创作</a></li>
+                <li><a href="shop.html">周边商城</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">同人创作区</h1>
+                <p class="page-subtitle">展示《空洞骑士：丝之歌》粉丝的原创作品，激发创意灵感</p>
+            </div>
+
+            <!-- Creation Categories -->
+            <div class="creation-categories">
+                <div class="category-card" onclick="filterCreations('artwork')">
+                    <span class="category-icon">🎨</span>
+                    <h3>同人画作</h3>
+                    <p>精美的插画、概念设计和数字艺术作品</p>
+                    <div class="category-count">156 件作品</div>
+                </div>
+                
+                <div class="category-card" onclick="filterCreations('cosplay')">
+                    <span class="category-icon">👗</span>
+                    <h3>Cosplay</h3>
+                    <p>精美的角色扮演和服装制作作品</p>
+                    <div class="category-count">42 件作品</div>
+                </div>
+                
+                <div class="category-card" onclick="filterCreations('fiction')">
+                    <span class="category-icon">📖</span>
+                    <h3>同人小说</h3>
+                    <p>原创故事、角色分析和剧情扩展</p>
+                    <div class="category-count">89 篇作品</div>
+                </div>
+                
+                <div class="category-card" onclick="filterCreations('music')">
+                    <span class="category-icon">🎵</span>
+                    <h3>原创音乐</h3>
+                    <p>游戏音乐改编和原创配乐作品</p>
+                    <div class="category-count">23 首作品</div>
+                </div>
+            </div>
+
+            <!-- Featured Creation -->
+            <section class="featured-creation">
+                <div class="featured-header">
+                    <h2 class="featured-title">Hornet在法洛姆王国的冒险</h2>
+                    <span class="featured-author">作者：ArtMaster2024</span>
+                </div>
+                <div class="featured-image">
+                    <div>
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎨</div>
+                        <div>精彩同人画作</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">点击查看完整作品</div>
+                    </div>
+                </div>
+                <div class="featured-content">
+                    <p>这幅作品展现了Hornet在法洛姆王国中的英姿，艺术家巧妙地结合了游戏中的元素，
+                    创造出了一个充满活力和神秘感的场景。色彩运用非常出色，完美捕捉了游戏的氛围。</p>
+                </div>
+                <div class="featured-actions">
+                    <a href="#" class="btn btn-primary">👀 查看完整作品</a>
+                    <a href="#" class="btn btn-secondary">💬 评论讨论</a>
+                </div>
+            </section>
+
+            <!-- Gallery Grid -->
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-image">🦗</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Hornet肖像画</h3>
+                        <p class="gallery-author">by SilkArtist</p>
+                        <p class="gallery-desc">精美的Hornet肖像画，展现了角色的优雅与力量。</p>
+                        <div class="gallery-meta">
+                            <span>2天前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 128</span>
+                                <span class="stat">💬 23</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image">👗</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Lace Cosplay</h3>
+                        <p class="gallery-author">by CosplayQueen</p>
+                        <p class="gallery-desc">完美的Lace角色扮演，服装制作精良，还原度极高。</p>
+                        <div class="gallery-meta">
+                            <span>3天前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 89</span>
+                                <span class="stat">💬 15</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image">📖</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">法洛姆的传说</h3>
+                        <p class="gallery-author">by StoryTeller</p>
+                        <p class="gallery-desc">原创同人小说，探索法洛姆王国的神秘历史。</p>
+                        <div class="gallery-meta">
+                            <span>1周前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 67</span>
+                                <span class="stat">💬 12</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image">🎵</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">丝绸之歌</h3>
+                        <p class="gallery-author">by MusicMaker</p>
+                        <p class="gallery-desc">原创音乐作品，灵感来源于Hornet的丝绸能力。</p>
+                        <div class="gallery-meta">
+                            <span>2周前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 156</span>
+                                <span class="stat">💬 34</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image">🎨</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Citadel Spire概念图</h3>
+                        <p class="gallery-author">by ConceptArtist</p>
+                        <p class="gallery-desc">精美的环境概念设计，展现了Citadel Spire的壮丽。</p>
+                        <div class="gallery-meta">
+                            <span>3周前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 203</span>
+                                <span class="stat">💬 45</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-image">👗</div>
+                    <div class="gallery-content">
+                        <h3 class="gallery-title">Shakra Cosplay</h3>
+                        <p class="gallery-author">by RolePlayer</p>
+                        <p class="gallery-desc">神秘的Shakra角色扮演，道具制作非常用心。</p>
+                        <div class="gallery-meta">
+                            <span>1个月前</span>
+                            <div class="gallery-stats">
+                                <span class="stat">❤️ 134</span>
+                                <span class="stat">💬 28</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contest Section -->
+            <section class="contest-section">
+                <div class="contest-header">
+                    <span class="contest-icon">🏆</span>
+                    <h2 class="contest-title">月度创作大赛</h2>
+                </div>
+                <div class="contest-content">
+                    <p>本月主题："法洛姆王国的秘密" - 以法洛姆王国的神秘氛围为主题，创作你的原创作品。
+                    可以是画作、小说、音乐或任何形式的创意表达。获奖作品将获得官方周边奖励！</p>
+                </div>
+                <div class="contest-deadline">截止时间：2024年12月31日</div>
+                <div class="featured-actions">
+                    <a href="#" class="btn btn-primary">🏆 参与比赛</a>
+                    <a href="#" class="btn btn-secondary">📋 查看规则</a>
+                </div>
+            </section>
+
+            <!-- Submit Creation -->
+            <section class="submit-section">
+                <h2 class="submit-title">分享你的作品</h2>
+                <p class="submit-desc">
+                    你有精彩的原创作品想要分享吗？无论是画作、Cosplay、小说还是音乐，
+                    我们都欢迎你的投稿！让我们一起丰富这个创意社区。
+                </p>
+                <form class="submit-form">
+                    <div class="form-group">
+                        <label class="form-label">作品类型</label>
+                        <select class="form-select">
+                            <option value="">选择作品类型</option>
+                            <option value="artwork">同人画作</option>
+                            <option value="cosplay">Cosplay</option>
+                            <option value="fiction">同人小说</option>
+                            <option value="music">原创音乐</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作品标题</label>
+                        <input type="text" class="form-input" placeholder="输入你的作品标题">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作品描述</label>
+                        <textarea class="form-textarea" placeholder="描述你的作品，分享创作灵感..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">作品链接</label>
+                        <input type="url" class="form-input" placeholder="粘贴作品链接（图片、视频、音频等）">
+                    </div>
+                    <button type="submit" class="btn btn-primary">🚀 提交作品</button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Creation filtering
+        function filterCreations(category) {
+            console.log(`过滤创作类别: ${category}`);
+            // 在实际实现中，这里会过滤显示对应类别的作品
+            alert(`正在加载${category}类别的作品...`);
+        }
+
+        // Gallery item interaction
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.gallery-title').textContent;
+                console.log(`查看作品: ${title}`);
+                // 在实际实现中，这里会打开作品的详细页面
+            });
+        });
+
+        // Featured creation interaction
+        document.querySelector('.featured-image').addEventListener('click', function() {
+            console.log('查看精选作品');
+            // 在实际实现中，这里会打开精选作品的详细页面
+        });
+
+        // Form submission
+        document.querySelector('.submit-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('提交创作作品');
+            // 在实际实现中，这里会处理表单提交
+            alert('作品提交成功！感谢你的分享！');
+        });
+
+        // Contest interaction
+        document.querySelector('.contest-section .btn-primary').addEventListener('click', function() {
+            console.log('参与创作大赛');
+            // 在实际实现中，这里会跳转到比赛页面
+        });
+
+        // Console welcome message
+        console.log(`
+        🎨 Siiksong 同人创作区
+        
+        这里是《空洞骑士：丝之歌》粉丝的创意展示平台，
+        汇聚了来自全球粉丝的精彩原创作品。
+        
+        包含内容：
+        - 同人画作展示
+        - Cosplay作品集
+        - 同人小说连载
+        - 原创音乐分享
+        - 月度创作大赛
+        - 作品投稿系统
+        
+        让我们一起创造属于法洛姆王国的艺术世界！
+        `);
+    </script>
+</body>
+</html>

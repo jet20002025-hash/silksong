@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资讯中心 - Siiksong</title>
+    <meta name="description" content="《空洞骑士：丝之歌》最新资讯、官方公告、开发者日志和媒体报道">
+    <meta name="keywords" content="Silksong, 丝之歌, 新闻, 资讯, 官方公告, 开发者日志">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff6b6b;
+        }
+        
+        .back-link {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 2rem;
+        }
+        
+        .back-link:hover {
+            color: #2980b9;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* News Categories */
+        .news-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .category-card h3 {
+            color: #fff;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .category-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-count {
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        /* Featured News */
+        .featured-section {
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .featured-news {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .news-category {
+            background: #ff6b6b;
+            color: #fff;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .news-date {
+            color: #4ecdc4;
+            font-size: 0.9rem;
+        }
+        
+        .news-title {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+        
+        .news-excerpt {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .read-more {
+            color: #4ecdc4;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: #ff6b6b;
+        }
+        
+        /* News List */
+        .news-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .news-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid #4ecdc4;
+        }
+        
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .news-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .news-item-title {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .news-item-title:hover {
+            color: #4ecdc4;
+        }
+        
+        .news-item-date {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        .news-item-summary {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* Load More */
+        .load-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .load-more-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .load-more-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: #4ecdc4;
+            color: #4ecdc4;
+            transform: translateY(-2px);
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .news-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .news-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .news-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-center.html" class="active">资讯中心</a></li>
+                <li><a href="guides.html">攻略指南</a></li>
+                <li><a href="community.html">社区</a></li>
+                <li><a href="lore.html">剧情分析</a></li>
+                <li><a href="creations.html">同人创作</a></li>
+                <li><a href="shop.html">周边商城</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">资讯中心</h1>
+                <p class="page-subtitle">第一时间获取《空洞骑士：丝之歌》的最新资讯、官方公告和媒体报道</p>
+            </div>
+
+            <!-- News Categories -->
+            <div class="news-categories">
+                <div class="category-card" onclick="filterNews('official')">
+                    <span class="category-icon">📢</span>
+                    <h3>官方公告</h3>
+                    <p>Team Cherry官方发布的重要公告和更新信息</p>
+                    <div class="category-count">12 篇文章</div>
+                </div>
+                
+                <div class="category-card" onclick="filterNews('developer')">
+                    <span class="category-icon">👨‍💻</span>
+                    <h3>开发者日志</h3>
+                    <p>开发团队分享的游戏开发进度和幕后故事</p>
+                    <div class="category-count">8 篇文章</div>
+                </div>
+                
+                <div class="category-card" onclick="filterNews('media')">
+                    <span class="category-icon">📰</span>
+                    <h3>媒体报道</h3>
+                    <p>各大游戏媒体对《丝之歌》的报道和评测</p>
+                    <div class="category-count">25 篇文章</div>
+                </div>
+                
+                <div class="category-card" onclick="filterNews('event')">
+                    <span class="category-icon">🎮</span>
+                    <h3>展会活动</h3>
+                    <p>E3、TGA等大型展会的最新消息和现场报道</p>
+                    <div class="category-count">6 篇文章</div>
+                </div>
+            </div>
+
+            <!-- Featured News -->
+            <section class="featured-section">
+                <h2 class="section-title">头条资讯</h2>
+                
+                <div class="featured-news">
+                    <div class="news-meta">
+                        <span class="news-category">官方公告</span>
+                        <span class="news-date">2024年12月15日</span>
+                    </div>
+                    <h2 class="news-title">《空洞骑士：丝之歌》2025年9月4日正式发布！</h2>
+                    <p class="news-excerpt">
+                        Team Cherry在2025年4月2日的任天堂直面会上正式确认，《空洞骑士：丝之歌》将于2025年9月4日发布。
+                        这款备受期待的续作将为玩家带来全新的冒险体验，Hornet将在法洛姆王国展开史诗般的旅程。
+                        游戏将登陆Nintendo Switch、PC、PlayStation和Xbox平台。
+                    </p>
+                    <a href="#" class="read-more">阅读全文 →</a>
+                </div>
+
+                <div class="news-list">
+                    <div class="news-item">
+                        <div class="news-item-header">
+                            <a href="#" class="news-item-title">PAX East 2024：《丝之歌》现场试玩报告</a>
+                            <span class="news-item-date">2024年12月12日</span>
+                        </div>
+                        <p class="news-item-summary">在PAX East 2024展会上的试玩体验，包括新的战斗机制和地图探索...</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-item-header">
+                            <a href="#" class="news-item-title">开发者日志：Hornet的丝绸能力设计理念</a>
+                            <span class="news-item-date">2024年12月10日</span>
+                        </div>
+                        <p class="news-item-summary">Team Cherry分享了Hornet独特丝绸能力的设计过程和实现方法...</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-item-header">
+                            <a href="#" class="news-item-title">IGN独家专访：Team Cherry谈《丝之歌》开发历程</a>
+                            <span class="news-item-date">2024年12月8日</span>
+                        </div>
+                        <p class="news-item-summary">IGN对Team Cherry团队的深度专访，揭秘游戏开发背后的故事...</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-item-header">
+                            <a href="#" class="news-item-title">Gamescom 2024：《丝之歌》新预告片解析</a>
+                            <span class="news-item-date">2024年12月5日</span>
+                        </div>
+                        <p class="news-item-summary">在Gamescom 2024上发布的全新预告片，展示了更多游戏内容...</p>
+                    </div>
+                    
+                    <div class="news-item">
+                        <div class="news-item-header">
+                            <a href="#" class="news-item-title">《丝之歌》音乐制作：Christopher Larkin的回归</a>
+                            <span class="news-item-date">2024年12月3日</span>
+                        </div>
+                        <p class="news-item-summary">作曲家Christopher Larkin继续为《丝之歌》创作配乐，带来新的音乐体验...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Load More -->
+            <div class="load-more-container">
+                <button class="load-more-btn" onclick="loadMoreNews()">加载更多资讯</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // News filtering functionality
+        function filterNews(category) {
+            console.log(`过滤资讯类别: ${category}`);
+            // 在实际实现中，这里会发送AJAX请求获取对应类别的新闻
+            alert(`正在加载${category}类别的资讯...`);
+        }
+
+        // Load more news
+        function loadMoreNews() {
+            const loadMoreBtn = document.querySelector('.load-more-btn');
+            loadMoreBtn.textContent = '加载中...';
+            loadMoreBtn.disabled = true;
+            
+            setTimeout(() => {
+                // 模拟加载更多新闻
+                const newsList = document.querySelector('.news-list');
+                const newNewsItem = document.createElement('div');
+                newNewsItem.className = 'news-item';
+                newNewsItem.innerHTML = `
+                    <div class="news-item-header">
+                        <a href="#" class="news-item-title">更多资讯内容...</a>
+                        <span class="news-item-date">2024年12月1日</span>
+                    </div>
+                    <p class="news-item-summary">这是新加载的资讯内容...</p>
+                `;
+                newsList.appendChild(newNewsItem);
+                
+                loadMoreBtn.textContent = '加载更多资讯';
+                loadMoreBtn.disabled = false;
+            }, 1500);
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Console welcome message
+        console.log(`
+        📢 Siiksong 资讯中心
+        
+        这里是《空洞骑士：丝之歌》的官方资讯中心，
+        提供最新的游戏新闻、官方公告和媒体报道。
+        
+        功能特点：
+        - 实时更新的游戏资讯
+        - 分类浏览功能
+        - 头条资讯展示
+        - 响应式设计
+        - 多语言支持
+        
+        欢迎关注我们的最新动态！
+        `);
+    </script>
+</body>
+</html>

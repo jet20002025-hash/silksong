@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度攻略与指南 - Siiksong</title>
+    <meta name="description" content="《空洞骑士：丝之歌》完整攻略指南，包含Boss战攻略、地图解析、隐藏物品收集和角色Build推荐">
+    <meta name="keywords" content="Silksong, 丝之歌, 攻略, 指南, Boss战, 地图, 收集, Build">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff6b6b;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Guide Categories */
+        .guide-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .category-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        
+        .category-title {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .guide-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .guide-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .guide-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: #4ecdc4;
+            transform: translateX(5px);
+        }
+        
+        .guide-item-title {
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .guide-item-title:hover {
+            color: #4ecdc4;
+        }
+        
+        .guide-item-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .difficulty-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .difficulty-easy {
+            background: #2ecc71;
+            color: #fff;
+        }
+        
+        .difficulty-medium {
+            background: #f39c12;
+            color: #fff;
+        }
+        
+        .difficulty-hard {
+            background: #e74c3c;
+            color: #fff;
+        }
+        
+        /* Featured Guide */
+        .featured-guide {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 2rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .featured-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            background: #4ecdc4;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .featured-content {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .guide-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Interactive Map Preview */
+        .map-preview {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .map-placeholder {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            border-radius: 15px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .map-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        /* Build Calculator Preview */
+        .build-calculator {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .crest-slot {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .crest-slot:hover {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+        
+        .slot-label {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .guide-categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .guide-actions {
+                width: 100%;
+            }
+            
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-center.html">资讯中心</a></li>
+                <li><a href="guides.html" class="active">攻略指南</a></li>
+                <li><a href="community.html">社区</a></li>
+                <li><a href="lore.html">剧情分析</a></li>
+                <li><a href="creations.html">同人创作</a></li>
+                <li><a href="shop.html">周边商城</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">深度攻略与指南</h1>
+                <p class="page-subtitle">掌握《空洞骑士：丝之歌》的每一个细节，从新手到专家</p>
+            </div>
+
+            <!-- Featured Guide -->
+            <section class="featured-guide">
+                <div class="featured-header">
+                    <h2 class="featured-title">Lace Boss战完整攻略</h2>
+                    <div class="featured-tags">
+                        <span class="tag">Boss战</span>
+                        <span class="tag">新手友好</span>
+                        <span class="tag">视频攻略</span>
+                    </div>
+                </div>
+                <div class="featured-content">
+                    <p>Lace是《丝之歌》中的第一个主要Boss，掌握她的攻击模式是成功的关键。本攻略将详细解析Lace的两个阶段，
+                    包括攻击时机、闪避技巧和反击策略。适合新手玩家学习基础Boss战技巧。</p>
+                </div>
+                <div class="guide-actions">
+                    <a href="#" class="btn btn-primary">📖 阅读完整攻略</a>
+                    <a href="#" class="btn btn-secondary">🎥 观看视频</a>
+                </div>
+            </section>
+
+            <!-- Guide Categories -->
+            <div class="guide-categories">
+                <!-- Boss战攻略 -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">⚔️</span>
+                        <h3 class="category-title">Boss战攻略</h3>
+                    </div>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Lace Boss战详解</a>
+                            <span class="difficulty-badge difficulty-easy">简单</span>
+                            <p class="guide-item-desc">第一个主要Boss，学习基础战斗技巧</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Shakra Boss战策略</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">掌握多阶段Boss战的应对方法</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">最终Boss终极攻略</a>
+                            <span class="difficulty-badge difficulty-hard">困难</span>
+                            <p class="guide-item-desc">游戏最终挑战的完整指南</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">隐藏Boss发现指南</a>
+                            <span class="difficulty-badge difficulty-hard">困难</span>
+                            <p class="guide-item-desc">寻找和挑战所有隐藏Boss</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 地图解析 -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">🗺️</span>
+                        <h3 class="category-title">地图解析</h3>
+                    </div>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Citadel Spire探索指南</a>
+                            <span class="difficulty-badge difficulty-easy">简单</span>
+                            <p class="guide-item-desc">主要区域的地图和重要地点</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Bonebottom秘密区域</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">地下洞穴的隐藏路径和宝藏</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Mossmire沼泽攻略</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">危险沼泽区域的生存指南</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Silkfalls瀑布区域</a>
+                            <span class="difficulty-badge difficulty-easy">简单</span>
+                            <p class="guide-item-desc">美丽瀑布区域的收集品位置</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 收集指南 -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">💎</span>
+                        <h3 class="category-title">收集指南</h3>
+                    </div>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">徽章收集大全</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">所有徽章的位置和获得方法</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">隐藏物品位置图</a>
+                            <span class="difficulty-badge difficulty-hard">困难</span>
+                            <p class="guide-item-desc">所有隐藏物品的详细位置</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">丝绸能力解锁</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">如何获得所有丝绸能力</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">成就解锁攻略</a>
+                            <span class="difficulty-badge difficulty-hard">困难</span>
+                            <p class="guide-item-desc">完成所有游戏成就的方法</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 角色Build -->
+                <div class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h3 class="category-title">角色Build</h3>
+                    </div>
+                    <div class="guide-list">
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">新手推荐Build</a>
+                            <span class="difficulty-badge difficulty-easy">简单</span>
+                            <p class="guide-item-desc">适合新手的徽章组合</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">速通Build配置</a>
+                            <span class="difficulty-badge difficulty-hard">困难</span>
+                            <p class="guide-item-desc">追求速度的徽章搭配</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">Boss战专用Build</a>
+                            <span class="difficulty-badge difficulty-medium">中等</span>
+                            <p class="guide-item-desc">针对Boss战优化的配置</p>
+                        </div>
+                        <div class="guide-item">
+                            <a href="#" class="guide-item-title">探索型Build</a>
+                            <span class="difficulty-badge difficulty-easy">简单</span>
+                            <p class="guide-item-desc">专注于探索和收集的配置</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Map Preview -->
+            <section class="map-preview">
+                <h2 style="color: #fff; margin-bottom: 1rem; font-size: 2rem;">交互式地图</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                    探索法洛姆王国的每一个角落，发现所有隐藏的秘密和宝藏
+                </p>
+                <div class="map-placeholder">
+                    <div>
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                        <div>交互式法洛姆王国地图</div>
+                        <div style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">点击探索不同区域</div>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-primary">🗺️ 打开完整地图</a>
+            </section>
+
+            <!-- Build Calculator Preview -->
+            <section class="build-calculator">
+                <h2 style="color: #fff; margin-bottom: 1rem; font-size: 2rem;">Build计算器</h2>
+                <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                    优化您的徽章组合，找到最适合您游戏风格的配置
+                </p>
+                <div class="calculator-grid">
+                    <div class="crest-slot">
+                        <span class="slot-label">攻击徽章</span>
+                    </div>
+                    <div class="crest-slot">
+                        <span class="slot-label">防御徽章</span>
+                    </div>
+                    <div class="crest-slot">
+                        <span class="slot-label">移动徽章</span>
+                    </div>
+                    <div class="crest-slot">
+                        <span class="slot-label">特殊徽章</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <a href="#" class="btn btn-primary">⚡ 打开计算器</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Guide interaction functionality
+        document.querySelectorAll('.guide-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const title = this.querySelector('.guide-item-title').textContent;
+                console.log(`打开攻略: ${title}`);
+                // 在实际实现中，这里会跳转到具体的攻略页面
+            });
+        });
+
+        // Crest slot interaction
+        document.querySelectorAll('.crest-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                console.log('选择徽章槽位');
+                // 在实际实现中，这里会打开徽章选择界面
+            });
+        });
+
+        // Map preview interaction
+        document.querySelector('.map-placeholder').addEventListener('click', function() {
+            console.log('打开交互式地图');
+            // 在实际实现中，这里会打开完整的地图界面
+        });
+
+        // Console welcome message
+        console.log(`
+        ⚔️ Siiksong 攻略指南中心
+        
+        这里是《空洞骑士：丝之歌》的完整攻略指南中心，
+        提供从新手到专家的全方位游戏指导。
+        
+        包含内容：
+        - Boss战详细攻略
+        - 地图区域解析
+        - 收集品位置指南
+        - 角色Build推荐
+        - 交互式地图工具
+        - Build计算器
+        
+        让每个玩家都能掌握法洛姆王国的秘密！
+        `);
+    </script>
+</body>
+</html>

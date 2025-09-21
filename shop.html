@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周边商城 - Siiksong</title>
+    <meta name="description" content="《空洞骑士：丝之歌》官方周边商品，包括T恤、手办、徽章、贴纸等精美商品">
+    <meta name="keywords" content="Silksong, 丝之歌, 周边, 商品, T恤, 手办, 徽章, 贴纸, 官方周边">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7208260866318884"
+            crossorigin="anonymous"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: #ff6b6b;
+        }
+        
+        .cart-icon {
+            position: relative;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .cart-icon:hover {
+            color: #4ecdc4;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6b6b;
+            color: #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 80px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-title {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Product Categories */
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #4ecdc4;
+            border-color: #4ecdc4;
+            transform: translateY(-2px);
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #ff6b6b;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-desc {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            color: #4ecdc4;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            flex: 1;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Featured Products */
+        .featured-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-left: 5px solid #ff6b6b;
+        }
+        
+        .featured-title {
+            color: #fff;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .cart-content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cart-title {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: #34495e;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.5rem;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            color: #2c3e50;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .cart-item-price {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+        
+        .cart-item-remove {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-total {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid #ecf0f1;
+            text-align: center;
+        }
+        
+        .cart-total-amount {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .product-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <a href="index.html" class="logo">🦗 Siiksong</a>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="news-center.html">资讯中心</a></li>
+                <li><a href="guides.html">攻略指南</a></li>
+                <li><a href="community.html">社区</a></li>
+                <li><a href="lore.html">剧情分析</a></li>
+                <li><a href="creations.html">同人创作</a></li>
+                <li><a href="shop.html" class="active">周边商城</a></li>
+            </ul>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">周边商城</h1>
+                <p class="page-subtitle">《空洞骑士：丝之歌》官方周边商品，支持社区发展</p>
+            </div>
+
+            <!-- Product Categories -->
+            <div class="product-categories">
+                <button class="category-btn active" onclick="filterProducts('all')">全部商品</button>
+                <button class="category-btn" onclick="filterProducts('clothing')">服装</button>
+                <button class="category-btn" onclick="filterProducts('figures')">手办</button>
+                <button class="category-btn" onclick="filterProducts('accessories')">配件</button>
+                <button class="category-btn" onclick="filterProducts('digital')">数字商品</button>
+            </div>
+
+            <!-- Featured Products -->
+            <section class="featured-section">
+                <h2 class="featured-title">🔥 热门推荐</h2>
+                <div class="product-grid">
+                    <div class="product-card" data-category="clothing">
+                        <div class="product-image">
+                            🦗
+                            <div class="product-badge">热销</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Hornet主题T恤</h3>
+                            <p class="product-desc">高品质纯棉T恤，印有精美的Hornet图案，舒适透气，适合日常穿着。</p>
+                            <div class="product-price">¥89</div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('Hornet主题T恤', 89, '🦗')">🛒 加入购物车</button>
+                                <button class="btn btn-secondary" onclick="viewProduct('hornet-tshirt')">👀 查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="figures">
+                        <div class="product-image">
+                            ⚔️
+                            <div class="product-badge">限量</div>
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">Lace手办模型</h3>
+                            <p class="product-desc">精工制作的Lace手办，细节丰富，是收藏家的不二选择。限量发售。</p>
+                            <div class="product-price">¥299</div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('Lace手办模型', 299, '⚔️')">🛒 加入购物车</button>
+                                <button class="btn btn-secondary" onclick="viewProduct('lace-figure')">👀 查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-category="accessories">
+                        <div class="product-image">
+                            🎒
+                        </div>
+                        <div class="product-content">
+                            <h3 class="product-title">法洛姆主题背包</h3>
+                            <p class="product-desc">实用的双肩背包，印有法洛姆王国的精美图案，容量大，质量好。</p>
+                            <div class="product-price">¥159</div>
+                            <div class="product-actions">
+                                <button class="btn btn-primary" onclick="addToCart('法洛姆主题背包', 159, '🎒')">🛒 加入购物车</button>
+                                <button class="btn btn-secondary" onclick="viewProduct('pharloom-backpack')">👀 查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Products -->
+            <div class="product-grid" id="productGrid">
+                <div class="product-card" data-category="clothing">
+                    <div class="product-image">👕</div>
+                    <div class="product-content">
+                        <h3 class="product-title">丝之歌Logo卫衣</h3>
+                        <p class="product-desc">舒适保暖的卫衣，胸前印有丝之歌标志性Logo。</p>
+                        <div class="product-price">¥129</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('丝之歌Logo卫衣', 129, '👕')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('silksong-hoodie')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">🏷️</div>
+                    <div class="product-content">
+                        <h3 class="product-title">角色徽章套装</h3>
+                        <p class="product-desc">包含Hornet、Lace等主要角色的精美徽章套装。</p>
+                        <div class="product-price">¥49</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('角色徽章套装', 49, '🏷️')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('character-pins')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">📱</div>
+                    <div class="product-content">
+                        <h3 class="product-title">手机壳系列</h3>
+                        <p class="product-desc">多款精美的手机壳，保护手机的同时展现个性。</p>
+                        <div class="product-price">¥39</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('手机壳系列', 39, '📱')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('phone-cases')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="digital">
+                    <div class="product-image">🎵</div>
+                    <div class="product-content">
+                        <h3 class="product-title">原声音乐专辑</h3>
+                        <p class="product-desc">Christopher Larkin创作的丝之歌原声音乐数字专辑。</p>
+                        <div class="product-price">¥29</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('原声音乐专辑', 29, '🎵')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('soundtrack')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="figures">
+                    <div class="product-image">🎮</div>
+                    <div class="product-content">
+                        <h3 class="product-title">Shakra手办</h3>
+                        <p class="product-desc">神秘角色Shakra的精美手办模型，制作精良。</p>
+                        <div class="product-price">¥249</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('Shakra手办', 249, '🎮')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('shakra-figure')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-category="accessories">
+                    <div class="product-image">🖼️</div>
+                    <div class="product-content">
+                        <h3 class="product-title">艺术海报套装</h3>
+                        <p class="product-desc">精美的游戏艺术海报，适合装饰房间。</p>
+                        <div class="product-price">¥79</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary" onclick="addToCart('艺术海报套装', 79, '🖼️')">🛒 加入购物车</button>
+                            <button class="btn btn-secondary" onclick="viewProduct('art-posters')">👀 查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3 class="cart-title">购物车</h3>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            <div id="cartItems">
+                <p style="text-align: center; color: #7f8c8d; padding: 2rem;">购物车为空</p>
+            </div>
+            <div class="cart-total" id="cartTotal" style="display: none;">
+                <div class="cart-total-amount">总计：¥<span id="totalAmount">0</span></div>
+                <button class="btn btn-primary" onclick="checkout()">💳 立即结算</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        
+        // Product filtering
+        function filterProducts(category) {
+            // Update active button
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter products
+            const products = document.querySelectorAll('.product-card');
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+            
+            console.log(`过滤商品类别: ${category}`);
+        }
+
+        // Add to cart
+        function addToCart(name, price, icon) {
+            const item = { name, price, icon };
+            cart.push(item);
+            updateCartDisplay();
+            showAddedMessage(name);
+        }
+
+        // Update cart display
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const totalAmount = document.getElementById('totalAmount');
+            
+            cartCount.textContent = cart.length;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 2rem;">购物车为空</p>';
+                cartTotal.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.icon}</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">¥${item.price}</div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${index})">×</button>
+                    </div>
+                `).join('');
+                
+                const total = cart.reduce((sum, item) => sum + item.price, 0);
+                totalAmount.textContent = total;
+                cartTotal.style.display = 'block';
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        // Toggle cart modal
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // View product details
+        function viewProduct(productId) {
+            console.log(`查看商品详情: ${productId}`);
+            // 在实际实现中，这里会跳转到商品详情页面
+            alert(`查看商品详情: ${productId}`);
+        }
+
+        // Show added message
+        function showAddedMessage(productName) {
+            const message = document.createElement('div');
+            message.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: #2ecc71;
+                color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 8px;
+                z-index: 3000;
+                font-weight: bold;
+            `;
+            message.textContent = `已添加 "${productName}" 到购物车`;
+            document.body.appendChild(message);
+            
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('购物车为空');
+                return;
+            }
+            
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            alert(`结算金额：¥${total}\n\n在实际实现中，这里会跳转到支付页面`);
+            
+            // 在实际实现中，这里会处理支付流程
+            cart = [];
+            updateCartDisplay();
+            toggleCart();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('cartModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleCart();
+            }
+        });
+
+        // Console welcome message
+        console.log(`
+        🛒 Siiksong 周边商城
+        
+        这里是《空洞骑士：丝之歌》的官方周边商城，
+        提供各种精美的游戏主题商品。
+        
+        商品类别：
+        - 服装系列（T恤、卫衣等）
+        - 手办模型（角色手办）
+        - 配件周边（徽章、手机壳等）
+        - 数字商品（音乐、壁纸等）
+        
+        支持社区发展，享受购物乐趣！
+        `);
+    </script>
+</body>
+</html>
