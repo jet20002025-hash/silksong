@@ -47,6 +47,11 @@ const translations = {
         browse: "Browse",
         read: "Read",
         
+        // Section titles
+        explorePharloom: "Explore Pharloom",
+        mapDescription: "Click on any area to discover secrets, bosses, and collectibles",
+        systemRequirements: "System Requirements",
+        
         // Search
         searchPlaceholder: "Search guides, bosses, tips...",
         
@@ -175,6 +180,11 @@ const translations = {
         view: "Ver",
         browse: "Navegar",
         read: "Leer",
+        
+        // Títulos de sección
+        explorePharloom: "Explora Pharloom",
+        mapDescription: "Haz clic en cualquier área para descubrir secretos, jefes y coleccionables",
+        systemRequirements: "Requisitos del Sistema",
         
         // Búsqueda
         searchPlaceholder: "Buscar guías, jefes, consejos...",
