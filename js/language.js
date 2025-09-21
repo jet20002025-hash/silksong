@@ -50,6 +50,10 @@ const translations = {
         // Search
         searchPlaceholder: "Search guides, bosses, tips...",
         
+        // Authentication
+        login: "Login",
+        register: "Register",
+        
         // Footer
         about: "About",
         contact: "Contact",
@@ -174,6 +178,10 @@ const translations = {
         
         // Búsqueda
         searchPlaceholder: "Buscar guías, jefes, consejos...",
+        
+        // Autenticación
+        login: "Iniciar Sesión",
+        register: "Registrarse",
         
         // Pie de página
         about: "Acerca de",
