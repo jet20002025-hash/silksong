@@ -42,8 +42,26 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://siiksong.store">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦗</text></svg>">
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Siiksong - Hollow Knight: Silksong Companion",
+        "description": "Your ultimate companion for Hollow Knight: Silksong - Expert guides, interactive maps, and community support",
+        "url": "https://siiksong.store",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://siiksong.store/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Siiksong",
+            "url": "https://siiksong.store"
+        }
+    }
+    </script>
     
     <style>
         * {
@@ -1886,13 +1904,124 @@
     </div>
 
     <script>
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', function(e) {
-            const query = e.target.value.toLowerCase();
-            if (query.length > 2) {
-                // Simulate search results
-                console.log('Searching for:', query);
-                // In a real implementation, this would trigger a search API call
+        // Enhanced search functionality
+        const searchData = {
+            guides: [
+                { title: 'Lace Boss Guide', description: 'Complete strategy for defeating Lace boss', category: 'Boss Fight' },
+                { title: 'Shakra Boss Strategy', description: 'Advanced tactics for Shakra encounter', category: 'Boss Fight' },
+                { title: 'Citadel Spire Map', description: 'Detailed map of Citadel Spire area', category: 'Map' },
+                { title: 'Silk Abilities Guide', description: 'How to unlock and use silk abilities', category: 'Abilities' },
+                { title: 'Crest Combinations', description: 'Best crest builds for different playstyles', category: 'Builds' },
+                { title: 'Hidden Areas', description: 'Secret locations and collectibles', category: 'Exploration' }
+            ],
+            lore: [
+                { title: 'Hornet\'s Origin', description: 'The mysterious background of Hornet', category: 'Character' },
+                { title: 'Pharloom History', description: 'The kingdom\'s ancient past', category: 'World' },
+                { title: 'Silk Magic', description: 'The power of silk in Silksong', category: 'Magic' },
+                { title: 'Character Relationships', description: 'How characters connect to each other', category: 'Story' }
+            ],
+            news: [
+                { title: 'Release Date Confirmed', description: 'Official release date announcement', category: 'Official' },
+                { title: 'New Trailer Analysis', description: 'Breaking down the latest gameplay trailer', category: 'Media' },
+                { title: 'Developer Interview', description: 'Insights from Team Cherry', category: 'Interview' }
+            ]
+        };
+        
+        function performSearch(query) {
+            if (query.length < 2) return;
+            
+            const results = [];
+            const searchTerm = query.toLowerCase();
+            
+            // Search through all data
+            Object.keys(searchData).forEach(category => {
+                searchData[category].forEach(item => {
+                    if (item.title.toLowerCase().includes(searchTerm) || 
+                        item.description.toLowerCase().includes(searchTerm)) {
+                        results.push({ ...item, type: category });
+                    }
+                });
+            });
+            
+            displaySearchResults(results);
+        }
+        
+        function displaySearchResults(results) {
+            const searchBox = document.querySelector('.search-box');
+            let resultsContainer = document.getElementById('searchResults');
+            
+            if (!resultsContainer) {
+                resultsContainer = document.createElement('div');
+                resultsContainer.id = 'searchResults';
+                resultsContainer.style.cssText = `
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: rgba(0, 0, 0, 0.95);
+                    border-radius: 10px;
+                    padding: 1rem;
+                    z-index: 1000;
+                    max-height: 400px;
+                    overflow-y: auto;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                `;
+                searchBox.style.position = 'relative';
+                searchBox.appendChild(resultsContainer);
+            }
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 1rem;">No results found</p>';
+                resultsContainer.style.display = 'block';
+                return;
+            }
+            
+            resultsContainer.innerHTML = results.slice(0, 5).map(result => `
+                <div style="
+                    padding: 0.8rem;
+                    border-bottom: 1px solid rgba(255,255,255,0.1);
+                    cursor: pointer;
+                    transition: background 0.3s;
+                " onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'" onclick="openSearchResult('${result.type}', '${result.title}')">
+                    <div style="color: #4ecdc4; font-weight: bold; margin-bottom: 0.3rem;">${result.title}</div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.3rem;">${result.description}</div>
+                    <div style="color: #ff6b6b; font-size: 0.8rem;">${result.category} • ${result.type}</div>
+                </div>
+            `).join('');
+            
+            resultsContainer.style.display = 'block';
+        }
+        
+        function openSearchResult(type, title) {
+            // Hide search results
+            const resultsContainer = document.getElementById('searchResults');
+            if (resultsContainer) {
+                resultsContainer.style.display = 'none';
+            }
+            
+            // Navigate based on type
+            switch(type) {
+                case 'guides':
+                    window.location.href = 'guides.html';
+                    break;
+                case 'lore':
+                    window.location.href = 'lore.html';
+                    break;
+                case 'news':
+                    window.location.href = 'news-center.html';
+                    break;
+                default:
+                    console.log(`Opening ${title} from ${type}`);
+            }
+        }
+        
+        // Hide search results when clicking outside
+        document.addEventListener('click', function(e) {
+            const searchBox = document.querySelector('.search-box');
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (resultsContainer && !searchBox.contains(e.target)) {
+                resultsContainer.style.display = 'none';
             }
         });
 
@@ -2007,21 +2136,9 @@
             }
         });
 
-        // Add search suggestions (simplified)
-        const searchSuggestions = [
-            'Lace boss guide',
-            'Mana regeneration tips',
-            'Crest combinations',
-            'Hidden areas',
-            'Speedrun routes',
-            'Mod installation',
-            'Pharloom map',
-            'Silksong endings'
-        ];
-
-        document.getElementById('searchInput').addEventListener('focus', function() {
-            // In a real implementation, this would show search suggestions
-            console.log('Search suggestions:', searchSuggestions);
+        // Search input event listener
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            performSearch(e.target.value);
         });
 
         // Add some visual feedback for interactions
