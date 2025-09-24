@@ -590,25 +590,25 @@
         // Load more news
         function loadMoreNews() {
             const loadMoreBtn = document.querySelector('.load-more-btn');
-            loadMoreBtn.textContent = '加载中...';
+            loadMoreBtn.textContent = 'Loading...';
             loadMoreBtn.disabled = true;
             
             setTimeout(() => {
-                // 模拟加载更多新闻
+                // Simulate loading more news
                 const newsList = document.querySelector('.news-list');
                 const newNewsItem = document.createElement('div');
                 newNewsItem.className = 'news-item';
                 newNewsItem.innerHTML = `
                     <div class="news-item-header">
-                        <a href="javascript:void(0)" class="news-item-title" onclick="alert('More news content coming soon!')">更多资讯内容...</a>
-                        <span class="news-item-date">2024年12月1日</span>
+                        <a href="javascript:void(0)" class="news-item-title" onclick="alert('More news content coming soon!')">More news content...</a>
+                        <span class="news-item-date">December 1, 2024</span>
                     </div>
             
-                    <p class="news-item-summary">这是新加载的资讯内容...</p>
+                    <p class="news-item-summary">This is newly loaded news content...</p>
                 `;
                 newsList.appendChild(newNewsItem);
                 
-                loadMoreBtn.textContent = '加载更多资讯';
+                loadMoreBtn.textContent = 'Load More News';
                 loadMoreBtn.disabled = false;
             }, 1500);
         }
@@ -631,17 +631,17 @@
         console.log(`
         📢 Siiksong News Center
         
-        这里是《空洞骑士：丝之歌》的官方News Center，
-        提供最新的游戏新闻、官方公告和媒体报道。
+        This is the official news center for Hollow Knight: Silksong,
+        providing the latest game news, official announcements and media coverage.
         
-        功能特点：
-        - 实时更新的游戏资讯
-        - 分类浏览功能
-        - 头条资讯展示
-        - 响应式设计
-        - 多语言支持
+        Features:
+        - Real-time game news updates
+        - Categorized browsing
+        - Featured news display
+        - Responsive design
+        - Multi-language support
         
-        欢迎关注我们的最新动态！
+        Welcome to follow our latest updates!
         `);
     </script>
     <!-- Language Support -->
